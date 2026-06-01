@@ -51,7 +51,7 @@
     "s3Time": "7:00 PM",
     "s3Name": "Midweek Bible Study",
     "s3Tag": "Deep Dive",
-    "note": "All services held at 123 Faith Avenue · Childcare available at all Sunday services"
+    "note": "All services held at 6240 N Avondale Ave · Childcare available at all Sunday services"
   },
   "sermons": {
     "label": "Media",
@@ -77,9 +77,9 @@
   "contact": {
     "label": "Find Us",
     "title": "We'd Love to<br><em>Hear From You</em>",
-    "pin": "123 Faith Avenue, Your City",
+    "pin": "6240 N Avondale Ave, Chicago, IL",
     "addressLabel": "Address",
-    "addressValue": "123 Faith Avenue<br>Your City, State 00000",
+    "addressValue": "6240 N Avondale Ave<br>Chicago, IL 60631",
     "phoneLabel": "Phone",
     "emailLabel": "Email",
     "formTitle": "Send Us a Message",

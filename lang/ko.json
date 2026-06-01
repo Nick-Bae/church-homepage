@@ -51,7 +51,7 @@
     "s3Time": "오후 7:00",
     "s3Name": "수요 성경공부",
     "s3Tag": "깊이 있는 묵상",
-    "note": "모든 예배는 Faith Avenue 123에서 진행됩니다 · 주일 예배 시간에는 어린이 돌봄을 제공합니다"
+    "note": "모든 예배는 6240 N Avondale Ave에서 진행됩니다 · 주일 예배 시간에는 어린이 돌봄을 제공합니다"
   },
   "sermons": {
     "label": "미디어",
@@ -77,9 +77,9 @@
   "contact": {
     "label": "오시는 길",
     "title": "여러분의 소식을<br><em>기다립니다</em>",
-    "pin": "Faith Avenue 123, Your City",
+    "pin": "6240 N Avondale Ave, 시카고, IL",
     "addressLabel": "주소",
-    "addressValue": "Faith Avenue 123<br>Your City, State 00000",
+    "addressValue": "6240 N Avondale Ave<br>시카고, IL 60631",
     "phoneLabel": "전화",
     "emailLabel": "이메일",
     "formTitle": "메시지 보내기",

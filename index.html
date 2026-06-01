@@ -586,37 +586,23 @@
     }
     .form-submit:hover { background: var(--gold); }
 
-    /* ── MAP PLACEHOLDER ── */
+    /* ── MAP ── */
     .map-box {
       margin-top: 0;
       width: 100%;
-      height: 220px;
-      background: var(--cream);
+      height: 260px;
       border: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
       margin-bottom: 32px;
       position: relative;
       overflow: hidden;
+      background: var(--cream);
     }
-    .map-box::before {
-      content: '';
-      position: absolute; inset: 0;
-      background:
-        repeating-linear-gradient(0deg, transparent, transparent 39px, var(--border) 39px, var(--border) 40px),
-        repeating-linear-gradient(90deg, transparent, transparent 39px, var(--border) 39px, var(--border) 40px);
+    .map-box iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
     }
-    .map-pin {
-      position: relative;
-      z-index: 1;
-      display: flex; flex-direction: column; align-items: center; gap: 8px;
-      color: var(--gold);
-      font-size: .78rem;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
-    .map-pin svg { filter: drop-shadow(0 2px 8px rgba(184,154,94,.4)); }
 
     /* ── FOOTER ── */
     footer {
@@ -873,19 +859,22 @@
           <h2 class="section-title" data-i18n-html="contact.title">We'd Love to<br><em>Hear From You</em></h2>
           <div class="divider"></div>
 
-          <div class="map-box">
-            <div class="map-pin">
-              <svg width="28" height="36" viewBox="0 0 28 36" fill="none">
-                <path d="M14 0C6.27 0 0 6.27 0 14c0 9.5 14 22 14 22S28 23.5 28 14C28 6.27 21.73 0 14 0z" fill="#b89a5e"/>
-                <circle cx="14" cy="14" r="5" fill="#f7f4ef"/>
-              </svg>
-              <span data-i18n="contact.pin">123 Faith Avenue, Your City</span>
-            </div>
-          </div>
+          <a class="map-box"
+             href="https://www.google.com/maps/dir/?api=1&destination=6240+N+Avondale+Ave%2C+Chicago%2C+IL+60631"
+             target="_blank"
+             rel="noopener noreferrer"
+             aria-label="Open church location in Google Maps">
+            <iframe
+              src="https://www.google.com/maps?q=6240+N+Avondale+Ave,+Chicago,+IL+60631&z=15&output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Church location map"
+              allowfullscreen></iframe>
+          </a>
 
           <div class="contact-detail">
             <div class="contact-detail-label" data-i18n="contact.addressLabel">Address</div>
-            <div class="contact-detail-value" data-i18n-html="contact.addressValue">123 Faith Avenue<br>Your City, State 00000</div>
+            <div class="contact-detail-value" data-i18n-html="contact.addressValue">6240 N Avondale Ave<br>Chicago, IL 60631</div>
           </div>
           <div class="contact-detail">
             <div class="contact-detail-label" data-i18n="contact.phoneLabel">Phone</div>
