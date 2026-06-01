@@ -801,9 +801,10 @@
           <p class="section-label" data-i18n="sermons.label">Media</p>
           <h2 class="section-title" data-i18n-html="sermons.title">Recent <em>Sermons</em></h2>
         </div>
-        <a href="#" class="sermons-link" data-i18n="sermons.viewAll">View all sermons</a>
+        <a id="sermons-view-all" href="#" class="sermons-link" data-i18n="sermons.viewAll">View all sermons</a>
       </div>
-      <div class="sermon-list reveal">
+      <div id="sermon-list" class="sermon-list reveal">
+        <!-- Populated by JS from YouTube; static items below are fallback -->
         <a href="#" class="sermon-item">
           <div class="sermon-play">
             <svg viewBox="0 0 24 24" fill="none"><path d="M8 5.14v13.72a1 1 0 001.5.86l10-6.86a1 1 0 000-1.72l-10-6.86A1 1 0 008 5.14z" fill="currentColor"/></svg>
@@ -970,6 +971,79 @@
     }, { threshold: 0.08 });
     reveals.forEach(el => observer.observe(el));
 
+    // ── YouTube sermons ───────────────────────────────────────────────
+    // Fill these in to enable auto-pull from YouTube. Until both are set,
+    // the static fallback items in the markup are shown.
+    const YOUTUBE_CONFIG = {
+      apiKey: 'AIzaSyAplPylrDaBtyWJxxPtkOpvc4NoT_pkBzU',         // YouTube Data API v3 key (restrict to your domain in Google Cloud Console)
+      playlistId: 'UUIg3iFoypBO0fOKTMihb4Iw',     // Channel uploads playlist (channel UC -> uploads UU)
+      channelUrl: 'https://www.youtube.com/@namjubae8062',     // Public channel/playlist URL — used by "View all sermons" link
+      maxResults: 4,
+    };
+
+    async function loadSermons() {
+      const cfg = YOUTUBE_CONFIG;
+      if (!cfg.apiKey || !cfg.playlistId) return; // not configured yet — keep fallback
+
+      if (cfg.channelUrl) {
+        const viewAll = document.getElementById('sermons-view-all');
+        if (viewAll) viewAll.href = cfg.channelUrl;
+      }
+
+      const url = `https://www.googleapis.com/youtube/v3/playlistItems` +
+        `?part=snippet&maxResults=${cfg.maxResults}` +
+        `&playlistId=${encodeURIComponent(cfg.playlistId)}` +
+        `&key=${encodeURIComponent(cfg.apiKey)}`;
+
+      try {
+        const res = await fetch(url);
+        if (!res.ok) throw new Error('YouTube API ' + res.status);
+        const data = await res.json();
+        if (!data.items || data.items.length === 0) return;
+        renderSermons(data.items);
+      } catch (err) {
+        console.warn('Sermon load failed, keeping static fallback:', err);
+      }
+    }
+
+    let cachedSermonItems = null;
+    function renderSermons(items) {
+      cachedSermonItems = items;
+      const list = document.getElementById('sermon-list');
+      if (!list) return;
+      const locale = (document.documentElement.lang === 'ko') ? 'ko-KR' : 'en-US';
+      const dateFmt = new Intl.DateTimeFormat(locale, { year: 'numeric', month: 'short', day: 'numeric' });
+
+      list.innerHTML = items.map(item => {
+        const s = item.snippet;
+        const videoId = s.resourceId && s.resourceId.videoId;
+        if (!videoId) return '';
+        const href = `https://www.youtube.com/watch?v=${videoId}`;
+        const title = escapeHtml(s.title || '');
+        const speaker = escapeHtml(s.videoOwnerChannelTitle || s.channelTitle || '');
+        const date = s.publishedAt ? dateFmt.format(new Date(s.publishedAt)) : '';
+        return `
+          <a href="${href}" target="_blank" rel="noopener noreferrer" class="sermon-item">
+            <div class="sermon-play">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M8 5.14v13.72a1 1 0 001.5.86l10-6.86a1 1 0 000-1.72l-10-6.86A1 1 0 008 5.14z" fill="currentColor"/></svg>
+            </div>
+            <div class="sermon-meta">
+              <p class="sermon-title">${title}</p>
+              <p class="sermon-speaker">${speaker}</p>
+            </div>
+            <div class="sermon-date">${date}</div>
+          </a>`;
+      }).join('');
+    }
+
+    function escapeHtml(s) {
+      return String(s).replace(/[&<>"']/g, c => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+      }[c]));
+    }
+
+    loadSermons();
+
     // Form submit — posts to Formspree, with honeypot + time-trap spam protection
     const formLoadedAt = Date.now();
     async function handleSubmit(e) {
@@ -1063,6 +1137,9 @@
         btn.classList.toggle('active', btn.dataset.lang === lang);
         btn.setAttribute('aria-pressed', btn.dataset.lang === lang ? 'true' : 'false');
       });
+
+      // Re-render YouTube-loaded sermons so dates match the new locale
+      if (cachedSermonItems) renderSermons(cachedSermonItems);
     }
 
     document.querySelectorAll('.lang-toggle button').forEach(btn => {
