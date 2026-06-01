@@ -98,7 +98,8 @@
     "messageLabel": "내용",
     "messagePh": "어떻게 도와드릴까요?",
     "submit": "메시지 보내기",
-    "success": "감사합니다 — 곧 연락드리겠습니다. ✦"
+    "success": "감사합니다 — 곧 연락드리겠습니다. ✦",
+    "error": "오류가 발생했습니다. 다시 시도하시거나 hello@graceandtruth.org 로 직접 이메일을 보내주세요."
   },
   "footer": {
     "copyright": "© 2025 Grace & Truth · 은혜와 진리. 모든 권리 보유."

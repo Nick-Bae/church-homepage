@@ -98,7 +98,8 @@
     "messageLabel": "Message",
     "messagePh": "How can we help?",
     "submit": "Send Message",
-    "success": "Thank you — we'll be in touch soon. ✦"
+    "success": "Thank you — we'll be in touch soon. ✦",
+    "error": "Something went wrong. Please try again, or email us directly at hello@graceandtruth.org."
   },
   "footer": {
     "copyright": "© 2025 Grace & Truth. All rights reserved."
