@@ -1,0 +1,10 @@
+# Local tool state — not part of the site
+.bkit/
+.claude/
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.idea/

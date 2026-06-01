@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Grace & Truth Church</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500&family=Noto+Serif+KR:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #f7f4ef;
+      --white: #ffffff;
+      --charcoal: #1c1c1c;
+      --mid: #5a5a52;
+      --gold: #b89a5e;
+      --gold-light: #d4b87a;
+      --border: #e4ddd2;
+      --nav-height: 72px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', 'Noto Sans KR', sans-serif;
+      background: var(--cream);
+      color: var(--charcoal);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Korean serif fallback for Cormorant headings */
+    html[lang="ko"] .nav-logo,
+    html[lang="ko"] .hero-h1,
+    html[lang="ko"] .section-title,
+    html[lang="ko"] .service-day,
+    html[lang="ko"] .stat-num,
+    html[lang="ko"] .value-item h4,
+    html[lang="ko"] .sermon-title,
+    html[lang="ko"] .contact-detail-value,
+    html[lang="ko"] .footer-logo,
+    html[lang="ko"] .hero-quote {
+      font-family: 'Cormorant Garamond', 'Noto Serif KR', serif;
+    }
+    html[lang="ko"] body { font-family: 'DM Sans', 'Noto Sans KR', sans-serif; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: var(--nav-height);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px;
+      background: rgba(247,244,239,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      transition: box-shadow .3s;
+    }
+    nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,.06); }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+      color: var(--charcoal);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--gold); }
+
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-size: .82rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      font-size: .82rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--charcoal);
+      padding: 10px 22px;
+      text-decoration: none;
+      transition: background .25s;
+    }
+    .nav-cta:hover { background: var(--gold); }
+
+    /* Language toggle */
+    .nav-right { display: flex; align-items: center; gap: 20px; }
+    .lang-toggle {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .76rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+    }
+    .lang-toggle button {
+      background: none;
+      border: none;
+      font: inherit;
+      letter-spacing: inherit;
+      color: var(--mid);
+      cursor: pointer;
+      padding: 4px 2px;
+      transition: color .2s;
+    }
+    .lang-toggle button:hover { color: var(--charcoal); }
+    .lang-toggle button.active { color: var(--gold); }
+    .lang-toggle .sep { color: var(--border); user-select: none; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: var(--nav-height);
+    }
+
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 64px 80px 80px;
+    }
+
+    .hero-label {
+      font-size: .75rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fadeUp .8s .2s forwards;
+    }
+
+    .hero-h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 5vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1.08;
+      letter-spacing: -.01em;
+      color: var(--charcoal);
+      opacity: 0;
+      animation: fadeUp .8s .35s forwards;
+    }
+    .hero-h1 em { font-style: italic; color: var(--gold); }
+
+    .hero-body {
+      margin-top: 28px;
+      max-width: 380px;
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--mid);
+      line-height: 1.75;
+      opacity: 0;
+      animation: fadeUp .8s .5s forwards;
+    }
+
+    .hero-actions {
+      margin-top: 44px;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      opacity: 0;
+      animation: fadeUp .8s .65s forwards;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 14px 32px;
+      background: var(--charcoal);
+      color: var(--white);
+      font-size: .82rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background .25s;
+    }
+    .btn-primary:hover { background: var(--gold); }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .82rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .btn-ghost:hover { color: var(--charcoal); }
+    .btn-ghost svg { transition: transform .2s; }
+    .btn-ghost:hover svg { transform: translateX(4px); }
+
+    .hero-visual {
+      position: relative;
+      overflow: hidden;
+      background: var(--charcoal);
+    }
+
+    .hero-visual::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 60% at 60% 40%, rgba(184,154,94,.18) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 50% at 30% 70%, rgba(184,154,94,.10) 0%, transparent 60%);
+    }
+
+    .hero-cross {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 110px; height: 220px;
+      opacity: .12;
+    }
+    .hero-cross::before, .hero-cross::after {
+      content: ''; position: absolute; background: var(--white);
+      border-radius: 2px;
+    }
+    .hero-cross::before { width: 100%; height: 24px; top: 30%; transform: translateY(-50%); }
+    .hero-cross::after  { width: 24px; height: 100%; left: 50%; transform: translateX(-50%); }
+
+    .hero-quote {
+      position: absolute;
+      bottom: 64px; left: 40px; right: 40px;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      color: rgba(255,255,255,.7);
+      line-height: 1.6;
+      border-left: 2px solid var(--gold);
+      padding-left: 20px;
+      opacity: 0;
+      animation: fadeUp .9s .8s forwards;
+    }
+    .hero-quote cite {
+      display: block;
+      margin-top: 8px;
+      font-style: normal;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .75rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* ── SECTION SHELL ── */
+    section { padding: 96px 0; }
+
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 48px; }
+
+    .section-label {
+      font-size: .72rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 3.5vw, 3.2rem);
+      font-weight: 300;
+      line-height: 1.15;
+    }
+    .section-title em { font-style: italic; color: var(--gold); }
+
+    .divider {
+      width: 48px; height: 1px;
+      background: var(--gold);
+      margin: 28px 0;
+    }
+
+    /* ── ABOUT ── */
+    #about { background: var(--white); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-body {
+      font-size: 1rem;
+      color: var(--mid);
+      line-height: 1.85;
+      font-weight: 300;
+    }
+    .about-body p + p { margin-top: 16px; }
+
+    .about-values {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .value-item { border-top: 1px solid var(--border); padding-top: 16px; }
+    .value-item h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .value-item p {
+      font-size: .85rem;
+      color: var(--mid);
+      font-weight: 300;
+    }
+
+    .about-stat-col {
+      display: flex; flex-direction: column; gap: 32px;
+    }
+
+    .stat-block {
+      padding: 36px;
+      background: var(--cream);
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+      transition: border-color .25s;
+    }
+    .stat-block:hover { border-color: var(--gold); }
+    .stat-block::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0;
+      height: 2px; width: 0;
+      background: var(--gold);
+      transition: width .4s;
+    }
+    .stat-block:hover::after { width: 100%; }
+
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem;
+      font-weight: 300;
+      line-height: 1;
+      color: var(--charcoal);
+    }
+    .stat-num span { color: var(--gold); }
+
+    .stat-label {
+      margin-top: 8px;
+      font-size: .8rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--mid);
+    }
+
+    /* ── SERVICES ── */
+    #services { background: var(--charcoal); color: var(--white); }
+    #services .section-label { color: var(--gold-light); }
+    #services .section-title { color: var(--white); }
+    #services .divider { background: var(--gold-light); }
+
+    .services-grid {
+      margin-top: 56px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .service-card {
+      padding: 48px 36px;
+      background: var(--charcoal);
+      transition: background .25s;
+      position: relative;
+    }
+    .service-card:hover { background: #252525; }
+
+    .service-day {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: var(--gold-light);
+      margin-bottom: 4px;
+    }
+
+    .service-time {
+      font-size: 2rem;
+      font-weight: 300;
+      letter-spacing: -.02em;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+
+    .service-name {
+      font-size: .8rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.45);
+    }
+
+    .service-tag {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 4px 12px;
+      font-size: .72rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      border: 1px solid rgba(184,154,94,.4);
+      color: var(--gold-light);
+    }
+
+    .services-note {
+      margin-top: 32px;
+      text-align: center;
+      font-size: .85rem;
+      color: rgba(255,255,255,.35);
+    }
+
+    /* ── SERMONS ── */
+    #sermons { background: var(--cream); }
+
+    .sermons-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 48px;
+    }
+
+    .sermons-link {
+      font-size: .8rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      border-bottom: 1px solid var(--gold);
+      padding-bottom: 2px;
+      transition: opacity .2s;
+      white-space: nowrap;
+      align-self: flex-end;
+    }
+    .sermons-link:hover { opacity: .6; }
+
+    .sermon-list { display: flex; flex-direction: column; gap: 1px; }
+
+    .sermon-item {
+      display: grid;
+      grid-template-columns: 64px 1fr auto;
+      gap: 28px;
+      align-items: center;
+      padding: 28px 32px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      transition: border-color .25s, box-shadow .25s;
+    }
+    .sermon-item:hover {
+      border-color: var(--gold);
+      box-shadow: 0 4px 24px rgba(0,0,0,.05);
+    }
+
+    .sermon-play {
+      width: 48px; height: 48px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .25s, border-color .25s;
+      flex-shrink: 0;
+    }
+    .sermon-item:hover .sermon-play {
+      background: var(--gold);
+      border-color: var(--gold);
+    }
+    .sermon-play svg { width: 16px; height: 16px; }
+    .sermon-item:hover .sermon-play svg path { fill: var(--white); }
+
+    .sermon-meta { min-width: 0; }
+    .sermon-series {
+      font-size: .72rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+    .sermon-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 400;
+      color: var(--charcoal);
+      margin-bottom: 4px;
+    }
+    .sermon-speaker {
+      font-size: .82rem;
+      color: var(--mid);
+      font-weight: 300;
+    }
+
+    .sermon-date {
+      font-size: .78rem;
+      color: rgba(90,90,82,.5);
+      letter-spacing: .06em;
+      white-space: nowrap;
+    }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--white); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+    }
+
+    .contact-detail {
+      margin-bottom: 36px;
+    }
+    .contact-detail-label {
+      font-size: .72rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .contact-detail-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 300;
+      line-height: 1.5;
+      color: var(--charcoal);
+    }
+    .contact-detail-value a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+      transition: border-color .2s;
+    }
+    .contact-detail-value a:hover { border-color: var(--gold); }
+
+    .contact-form { display: flex; flex-direction: column; gap: 16px; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    .form-field { display: flex; flex-direction: column; gap: 8px; }
+    .form-field label {
+      font-size: .72rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--mid);
+    }
+    .form-field input,
+    .form-field textarea,
+    .form-field select {
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      background: var(--cream);
+      font-family: 'DM Sans', sans-serif;
+      font-size: .92rem;
+      color: var(--charcoal);
+      outline: none;
+      transition: border-color .2s;
+      resize: none;
+    }
+    .form-field input:focus,
+    .form-field textarea:focus,
+    .form-field select:focus { border-color: var(--gold); }
+
+    .form-submit {
+      margin-top: 8px;
+      padding: 14px 32px;
+      background: var(--charcoal);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: .82rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background .25s;
+      align-self: flex-start;
+    }
+    .form-submit:hover { background: var(--gold); }
+
+    /* ── MAP PLACEHOLDER ── */
+    .map-box {
+      margin-top: 0;
+      width: 100%;
+      height: 220px;
+      background: var(--cream);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .map-box::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        repeating-linear-gradient(0deg, transparent, transparent 39px, var(--border) 39px, var(--border) 40px),
+        repeating-linear-gradient(90deg, transparent, transparent 39px, var(--border) 39px, var(--border) 40px);
+    }
+    .map-pin {
+      position: relative;
+      z-index: 1;
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      color: var(--gold);
+      font-size: .78rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .map-pin svg { filter: drop-shadow(0 2px 8px rgba(184,154,94,.4)); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--charcoal);
+      color: rgba(255,255,255,.4);
+      padding: 40px 0;
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: rgba(255,255,255,.7);
+      font-weight: 400;
+    }
+    .footer-logo span { color: var(--gold-light); }
+    footer p { font-size: .78rem; }
+    .footer-links { display: flex; gap: 24px; list-style: none; }
+    .footer-links a {
+      font-size: .75rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.3);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .footer-links a:hover { color: var(--gold-light); }
+
+    /* ── REVEAL ANIMATION ── */
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.hidden {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    .reveal.hidden.visible { opacity: 1; transform: none; }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: none; }
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      #hero { grid-template-columns: 1fr; }
+      .hero-visual { display: none; }
+      .hero-text { padding: 60px 28px; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .container { padding: 0 24px; }
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .form-row { grid-template-columns: 1fr; }
+      .sermon-item { grid-template-columns: 48px 1fr; }
+      .sermon-date { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="#" class="nav-logo">Grace <span>&amp;</span> Truth <span>·</span> 은혜와 진리</a>
+    <ul class="nav-links">
+      <li><a href="#about" data-i18n="nav.about">About</a></li>
+      <li><a href="#services" data-i18n="nav.services">Services</a></li>
+      <li><a href="#sermons" data-i18n="nav.sermons">Sermons</a></li>
+      <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="lang-toggle" aria-label="Language">
+        <button type="button" data-lang="en">EN</button>
+        <span class="sep">|</span>
+        <button type="button" data-lang="ko">KO</button>
+      </div>
+      <a href="#services" class="nav-cta" data-i18n="nav.cta">Join Us</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-text">
+      <p class="hero-label" data-i18n="hero.label">Welcome Home</p>
+      <h1 class="hero-h1" data-i18n-html="hero.title">A Place to<br><em>Belong,</em><br>Believe &amp; Grow</h1>
+      <p class="hero-body" data-i18n="hero.body">
+        We are a community rooted in faith, open to all. Whether you're taking your first steps or deepening your walk, you'll find a home here.
+      </p>
+      <div class="hero-actions">
+        <a href="#services" class="btn-primary" data-i18n="hero.primary">Plan Your Visit</a>
+        <a href="#sermons" class="btn-ghost">
+          <span data-i18n="hero.secondary">Watch a Sermon</span>
+          <svg width="18" height="12" viewBox="0 0 18 12" fill="none"><path d="M12 1L17 6L12 11M1 6H17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-cross"></div>
+      <div class="hero-quote">
+        <span data-i18n="hero.quote">"For where two or three gather in my name, there am I with them."</span>
+        <cite data-i18n="hero.quoteCite">— Matthew 18:20</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="reveal">
+          <p class="section-label" data-i18n="about.label">Our Story</p>
+          <h2 class="section-title" data-i18n-html="about.title">More Than a<br>Sunday <em>Service</em></h2>
+          <div class="divider"></div>
+          <div class="about-body">
+            <p data-i18n="about.p1">Founded on the belief that every person carries a unique story, our church has been a gathering place for the curious, the searching, and the faithful for over four decades.</p>
+            <p data-i18n="about.p2">We hold to the timeless truths of Scripture while remaining open, warm, and welcoming to everyone — wherever they are on their journey.</p>
+          </div>
+          <div class="about-values">
+            <div class="value-item">
+              <h4 data-i18n="about.v1Title">Authentic Faith</h4>
+              <p data-i18n="about.v1Body">Real, lived-out belief in everyday life.</p>
+            </div>
+            <div class="value-item">
+              <h4 data-i18n="about.v2Title">Open Doors</h4>
+              <p data-i18n="about.v2Body">Everyone is welcome, no exceptions.</p>
+            </div>
+            <div class="value-item">
+              <h4 data-i18n="about.v3Title">Deep Roots</h4>
+              <p data-i18n="about.v3Body">Scripture-centered, Spirit-led teaching.</p>
+            </div>
+            <div class="value-item">
+              <h4 data-i18n="about.v4Title">Generous Love</h4>
+              <p data-i18n="about.v4Body">Serving our city and the world.</p>
+            </div>
+          </div>
+        </div>
+        <div class="about-stat-col reveal">
+          <div class="stat-block">
+            <div class="stat-num">40<span>+</span></div>
+            <div class="stat-label" data-i18n="about.s1Label">Years of Community</div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-num">12<span></span></div>
+            <div class="stat-label" data-i18n="about.s2Label">Active Ministries</div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-num">800<span>+</span></div>
+            <div class="stat-label" data-i18n="about.s3Label">Congregation Members</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE TIMES -->
+  <section id="services">
+    <div class="container">
+      <p class="section-label" data-i18n="services.label">Join Us</p>
+      <h2 class="section-title" style="color:var(--white)" data-i18n-html="services.title">Service <em style="color:var(--gold-light)">Times</em></h2>
+      <div class="divider"></div>
+      <div class="services-grid reveal">
+        <div class="service-card">
+          <div class="service-day" data-i18n="services.s1Day">Sunday</div>
+          <div class="service-time" data-i18n="services.s1Time">8:30 AM</div>
+          <div class="service-name" data-i18n="services.s1Name">Traditional Worship</div>
+          <div class="service-tag" data-i18n="services.s1Tag">Intimate</div>
+        </div>
+        <div class="service-card">
+          <div class="service-day" data-i18n="services.s2Day">Sunday</div>
+          <div class="service-time" data-i18n="services.s2Time">10:30 AM</div>
+          <div class="service-name" data-i18n="services.s2Name">Contemporary Service</div>
+          <div class="service-tag" data-i18n="services.s2Tag">Family-Friendly</div>
+        </div>
+        <div class="service-card">
+          <div class="service-day" data-i18n="services.s3Day">Wednesday</div>
+          <div class="service-time" data-i18n="services.s3Time">7:00 PM</div>
+          <div class="service-name" data-i18n="services.s3Name">Midweek Bible Study</div>
+          <div class="service-tag" data-i18n="services.s3Tag">Deep Dive</div>
+        </div>
+      </div>
+      <p class="services-note" data-i18n="services.note">All services held at 123 Faith Avenue · Childcare available at all Sunday services</p>
+    </div>
+  </section>
+
+  <!-- SERMONS -->
+  <section id="sermons">
+    <div class="container">
+      <div class="sermons-header">
+        <div>
+          <p class="section-label" data-i18n="sermons.label">Media</p>
+          <h2 class="section-title" data-i18n-html="sermons.title">Recent <em>Sermons</em></h2>
+        </div>
+        <a href="#" class="sermons-link" data-i18n="sermons.viewAll">View all sermons</a>
+      </div>
+      <div class="sermon-list reveal">
+        <a href="#" class="sermon-item">
+          <div class="sermon-play">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M8 5.14v13.72a1 1 0 001.5.86l10-6.86a1 1 0 000-1.72l-10-6.86A1 1 0 008 5.14z" fill="currentColor"/></svg>
+          </div>
+          <div class="sermon-meta">
+            <p class="sermon-series" data-i18n="sermons.i1Series">Letters to the Church</p>
+            <p class="sermon-title" data-i18n="sermons.i1Title">The Love That Never Fails</p>
+            <p class="sermon-speaker" data-i18n="sermons.i1Speaker">Pastor David Mercer</p>
+          </div>
+          <div class="sermon-date" data-i18n="sermons.i1Date">Mar 23, 2025</div>
+        </a>
+        <a href="#" class="sermon-item">
+          <div class="sermon-play">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M8 5.14v13.72a1 1 0 001.5.86l10-6.86a1 1 0 000-1.72l-10-6.86A1 1 0 008 5.14z" fill="currentColor"/></svg>
+          </div>
+          <div class="sermon-meta">
+            <p class="sermon-series" data-i18n="sermons.i2Series">Letters to the Church</p>
+            <p class="sermon-title" data-i18n="sermons.i2Title">Standing Firm in Uncertain Times</p>
+            <p class="sermon-speaker" data-i18n="sermons.i2Speaker">Pastor David Mercer</p>
+          </div>
+          <div class="sermon-date" data-i18n="sermons.i2Date">Mar 16, 2025</div>
+        </a>
+        <a href="#" class="sermon-item">
+          <div class="sermon-play">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M8 5.14v13.72a1 1 0 001.5.86l10-6.86a1 1 0 000-1.72l-10-6.86A1 1 0 008 5.14z" fill="currentColor"/></svg>
+          </div>
+          <div class="sermon-meta">
+            <p class="sermon-series" data-i18n="sermons.i3Series">Letters to the Church</p>
+            <p class="sermon-title" data-i18n="sermons.i3Title">Rooted in Grace, Reaching in Love</p>
+            <p class="sermon-speaker" data-i18n="sermons.i3Speaker">Guest Speaker — Rev. A. Collins</p>
+          </div>
+          <div class="sermon-date" data-i18n="sermons.i3Date">Mar 9, 2025</div>
+        </a>
+        <a href="#" class="sermon-item">
+          <div class="sermon-play">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M8 5.14v13.72a1 1 0 001.5.86l10-6.86a1 1 0 000-1.72l-10-6.86A1 1 0 008 5.14z" fill="currentColor"/></svg>
+          </div>
+          <div class="sermon-meta">
+            <p class="sermon-series" data-i18n="sermons.i4Series">Psalms</p>
+            <p class="sermon-title" data-i18n="sermons.i4Title">When Silence Feels Like God Is Far</p>
+            <p class="sermon-speaker" data-i18n="sermons.i4Speaker">Pastor David Mercer</p>
+          </div>
+          <div class="sermon-date" data-i18n="sermons.i4Date">Mar 2, 2025</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="reveal">
+          <p class="section-label" data-i18n="contact.label">Find Us</p>
+          <h2 class="section-title" data-i18n-html="contact.title">We'd Love to<br><em>Hear From You</em></h2>
+          <div class="divider"></div>
+
+          <div class="map-box">
+            <div class="map-pin">
+              <svg width="28" height="36" viewBox="0 0 28 36" fill="none">
+                <path d="M14 0C6.27 0 0 6.27 0 14c0 9.5 14 22 14 22S28 23.5 28 14C28 6.27 21.73 0 14 0z" fill="#b89a5e"/>
+                <circle cx="14" cy="14" r="5" fill="#f7f4ef"/>
+              </svg>
+              <span data-i18n="contact.pin">123 Faith Avenue, Your City</span>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <div class="contact-detail-label" data-i18n="contact.addressLabel">Address</div>
+            <div class="contact-detail-value" data-i18n-html="contact.addressValue">123 Faith Avenue<br>Your City, State 00000</div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-label" data-i18n="contact.phoneLabel">Phone</div>
+            <div class="contact-detail-value"><a href="tel:+10000000000">(000) 000-0000</a></div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-label" data-i18n="contact.emailLabel">Email</div>
+            <div class="contact-detail-value"><a href="mailto:hello@graceandtruth.org">hello@graceandtruth.org</a></div>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <p class="section-label" style="visibility:hidden">—</p>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;margin-bottom:28px;" data-i18n="contact.formTitle">Send Us a Message</h3>
+          <form class="contact-form" onsubmit="handleSubmit(event)">
+            <div class="form-row">
+              <div class="form-field">
+                <label data-i18n="contact.firstNameLabel">First Name</label>
+                <input type="text" placeholder="Jane" data-i18n-placeholder="contact.firstNamePh" />
+              </div>
+              <div class="form-field">
+                <label data-i18n="contact.lastNameLabel">Last Name</label>
+                <input type="text" placeholder="Doe" data-i18n-placeholder="contact.lastNamePh" />
+              </div>
+            </div>
+            <div class="form-field">
+              <label data-i18n="contact.emailFieldLabel">Email</label>
+              <input type="email" placeholder="jane@email.com" data-i18n-placeholder="contact.emailPh" />
+            </div>
+            <div class="form-field">
+              <label data-i18n="contact.topicLabel">Topic</label>
+              <select>
+                <option value="" data-i18n="contact.topicDefault">Select a topic</option>
+                <option data-i18n="contact.topic1">I'm new &amp; want to visit</option>
+                <option data-i18n="contact.topic2">Prayer request</option>
+                <option data-i18n="contact.topic3">Ministries &amp; groups</option>
+                <option data-i18n="contact.topic4">General inquiry</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label data-i18n="contact.messageLabel">Message</label>
+              <textarea rows="4" placeholder="How can we help?" data-i18n-placeholder="contact.messagePh"></textarea>
+            </div>
+            <button type="submit" class="form-submit" data-i18n="contact.submit">Send Message</button>
+          </form>
+          <div id="form-success" style="display:none;margin-top:16px;padding:16px 20px;background:var(--cream);border:1px solid var(--gold);font-size:.88rem;color:var(--mid);" data-i18n="contact.success">
+            Thank you — we'll be in touch soon. ✦
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">Grace <span>&amp;</span> Truth <span>·</span> 은혜와 진리</div>
+        <ul class="footer-links">
+          <li><a href="#about" data-i18n="nav.about">About</a></li>
+          <li><a href="#services" data-i18n="nav.services">Services</a></li>
+          <li><a href="#sermons" data-i18n="nav.sermons">Sermons</a></li>
+          <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+        <p data-i18n="footer.copyright">© 2025 Grace &amp; Truth. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll shadow
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Reveal on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 80);
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Form submit
+    function handleSubmit(e) {
+      e.preventDefault();
+      document.getElementById('form-success').style.display = 'block';
+      e.target.style.display = 'none';
+    }
+
+    // ── i18n: auto-detect, manual override, persistent ──
+    const SUPPORTED = ['en', 'ko'];
+    const LS_KEY = 'lang';
+    const dictCache = {};
+
+    function detectInitialLang() {
+      const stored = localStorage.getItem(LS_KEY);
+      if (stored && SUPPORTED.includes(stored)) return stored;
+      const browser = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+      return browser.startsWith('ko') ? 'ko' : 'en';
+    }
+
+    function resolveKey(dict, key) {
+      return key.split('.').reduce((o, k) => (o == null ? o : o[k]), dict);
+    }
+
+    async function loadDict(lang) {
+      if (dictCache[lang]) return dictCache[lang];
+      const res = await fetch(`./lang/${lang}.json`, { cache: 'no-cache' });
+      if (!res.ok) throw new Error(`Failed to load ${lang}.json`);
+      const dict = await res.json();
+      dictCache[lang] = dict;
+      return dict;
+    }
+
+    async function applyLang(lang) {
+      if (!SUPPORTED.includes(lang)) lang = 'en';
+      let dict;
+      try {
+        dict = await loadDict(lang);
+      } catch (err) {
+        console.error(err);
+        return;
+      }
+
+      document.documentElement.lang = (dict.meta && dict.meta.htmlLang) || lang;
+      if (dict.meta && dict.meta.title) document.title = dict.meta.title;
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const v = resolveKey(dict, el.getAttribute('data-i18n'));
+        if (v != null) el.textContent = v;
+      });
+      document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const v = resolveKey(dict, el.getAttribute('data-i18n-html'));
+        if (v != null) el.innerHTML = v;
+      });
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const v = resolveKey(dict, el.getAttribute('data-i18n-placeholder'));
+        if (v != null) el.setAttribute('placeholder', v);
+      });
+
+      localStorage.setItem(LS_KEY, lang);
+      document.querySelectorAll('.lang-toggle button').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+        btn.setAttribute('aria-pressed', btn.dataset.lang === lang ? 'true' : 'false');
+      });
+    }
+
+    document.querySelectorAll('.lang-toggle button').forEach(btn => {
+      btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+    });
+
+    applyLang(detectInitialLang());
+  </script>
+</body>
+</html>
