@@ -972,32 +972,28 @@
     reveals.forEach(el => observer.observe(el));
 
     // ── YouTube sermons ───────────────────────────────────────────────
-    // Fill these in to enable auto-pull from YouTube. Until both are set,
-    // the static fallback items in the markup are shown.
-    const YOUTUBE_CONFIG = {
-      apiKey: 'AIzaSyAplPylrDaBtyWJxxPtkOpvc4NoT_pkBzU',         // YouTube Data API v3 key (restrict to your domain in Google Cloud Console)
-      playlistId: 'UUIg3iFoypBO0fOKTMihb4Iw',     // Channel uploads playlist (channel UC -> uploads UU)
-      channelUrl: 'https://www.youtube.com/@namjubae8062',     // Public channel/playlist URL — used by "View all sermons" link
+    // Calls a serverless function at /api/sermons that holds the API key as a
+    // server-side env var. No secrets in the browser or repo. The static
+    // fallback items in the markup are shown if the function is unavailable.
+    const SERMONS_CONFIG = {
+      endpoint: '/api/sermons',
+      channelUrl: 'https://www.youtube.com/@namjubae8062',   // "View all sermons" link
       maxResults: 4,
     };
 
     async function loadSermons() {
-      const cfg = YOUTUBE_CONFIG;
-      if (!cfg.apiKey || !cfg.playlistId) return; // not configured yet — keep fallback
+      const cfg = SERMONS_CONFIG;
 
       if (cfg.channelUrl) {
         const viewAll = document.getElementById('sermons-view-all');
         if (viewAll) viewAll.href = cfg.channelUrl;
       }
 
-      const url = `https://www.googleapis.com/youtube/v3/playlistItems` +
-        `?part=snippet&maxResults=${cfg.maxResults}` +
-        `&playlistId=${encodeURIComponent(cfg.playlistId)}` +
-        `&key=${encodeURIComponent(cfg.apiKey)}`;
+      const url = `${cfg.endpoint}?maxResults=${cfg.maxResults}`;
 
       try {
         const res = await fetch(url);
-        if (!res.ok) throw new Error('YouTube API ' + res.status);
+        if (!res.ok) throw new Error('Sermons API ' + res.status);
         const data = await res.json();
         if (!data.items || data.items.length === 0) return;
         renderSermons(data.items);
