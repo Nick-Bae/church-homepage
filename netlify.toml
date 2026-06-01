@@ -1,0 +1,10 @@
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+# Route /api/sermons to the Netlify Function so the client doesn't
+# need to know the underlying /.netlify/functions/ path.
+[[redirects]]
+  from = "/api/sermons"
+  to = "/.netlify/functions/sermons"
+  status = 200

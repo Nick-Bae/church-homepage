@@ -1,30 +1,30 @@
 /**
- * Cloudflare Pages Function: GET /api/sermons
+ * Netlify Function: GET /api/sermons (mapped via netlify.toml)
  *
  * Proxies the YouTube Data API so the API key stays server-side.
  *
- * Environment variables (set in Cloudflare Pages dashboard → Settings → Env vars):
+ * Environment variables (set in Netlify dashboard → Site settings → Environment variables):
  *   YOUTUBE_API_KEY      — YouTube Data API v3 key
  *   YOUTUBE_PLAYLIST_ID  — Playlist ID (use UU... for channel uploads)
  *
  * Query params:
  *   maxResults (optional, default 4, max 10)
  *
- * Response shape: { items: [...] }  (same shape as YouTube playlistItems.list)
+ * Response shape: { items: [...] }  (subset of YouTube playlistItems.list)
  */
-export async function onRequestGet(context) {
-  const { env, request } = context;
-  const url = new URL(request.url);
-  const maxResults = Math.min(parseInt(url.searchParams.get('maxResults') || '4', 10), 10);
+exports.handler = async (event) => {
+  const params = event.queryStringParameters || {};
+  const maxResults = Math.min(parseInt(params.maxResults || '4', 10), 10);
 
-  const apiKey = env.YOUTUBE_API_KEY;
-  const playlistId = env.YOUTUBE_PLAYLIST_ID;
+  const apiKey = process.env.YOUTUBE_API_KEY;
+  const playlistId = process.env.YOUTUBE_PLAYLIST_ID;
 
   if (!apiKey || !playlistId) {
     return json({ error: 'Server not configured' }, 500);
   }
 
-  const ytUrl = `https://www.googleapis.com/youtube/v3/playlistItems` +
+  const ytUrl =
+    'https://www.googleapis.com/youtube/v3/playlistItems' +
     `?part=snippet&maxResults=${maxResults}` +
     `&playlistId=${encodeURIComponent(playlistId)}` +
     `&key=${encodeURIComponent(apiKey)}`;
@@ -35,7 +35,6 @@ export async function onRequestGet(context) {
       return json({ error: 'YouTube API ' + ytRes.status }, 502);
     }
     const data = await ytRes.json();
-    // Pass through only what the client needs
     const items = (data.items || []).map(item => ({
       snippet: {
         title: item.snippet.title,
@@ -46,17 +45,18 @@ export async function onRequestGet(context) {
       },
     }));
     return json({ items }, 200, {
-      // Cache at edge for 10 min so we don't burn quota on every page load
+      // Cache at Netlify edge for 10 min so we don't burn quota on every page load
       'Cache-Control': 'public, max-age=600, s-maxage=600',
     });
   } catch (err) {
     return json({ error: 'Upstream fetch failed' }, 502);
   }
-}
+};
 
-function json(body, status = 200, extraHeaders = {}) {
-  return new Response(JSON.stringify(body), {
-    status,
+function json(body, statusCode = 200, extraHeaders = {}) {
+  return {
+    statusCode,
     headers: { 'Content-Type': 'application/json', ...extraHeaders },
-  });
+    body: JSON.stringify(body),
+  };
 }
