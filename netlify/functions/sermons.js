@@ -32,7 +32,9 @@ exports.handler = async (event) => {
   try {
     const ytRes = await fetch(ytUrl);
     if (!ytRes.ok) {
-      return json({ error: 'YouTube API ' + ytRes.status }, 502);
+      const detail = await ytRes.text().catch(() => '');
+      console.error('YouTube API error', ytRes.status, detail);
+      return json({ error: 'YouTube API ' + ytRes.status, detail }, 502);
     }
     const data = await ytRes.json();
     const items = (data.items || []).map(item => ({
