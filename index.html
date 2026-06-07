@@ -358,6 +358,66 @@
       color: var(--mid);
     }
 
+    .about-cta {
+      margin-top: 36px;
+      align-self: flex-start;
+    }
+
+    /* ── BELIEFS ── */
+    #beliefs { background: var(--cream); }
+
+    .beliefs-grid {
+      margin-top: 56px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .belief-card {
+      padding: 40px 36px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+      transition: border-color .25s, transform .25s, box-shadow .25s;
+    }
+    .belief-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 28px rgba(0,0,0,.05);
+    }
+    .belief-card::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0;
+      height: 2px; width: 0;
+      background: var(--gold);
+      transition: width .4s;
+    }
+    .belief-card:hover::after { width: 100%; }
+
+    .belief-icon {
+      font-size: 1.9rem;
+      display: block;
+      margin-bottom: 16px;
+      line-height: 1;
+    }
+
+    .belief-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.55rem;
+      font-weight: 500;
+      letter-spacing: -.005em;
+      color: var(--charcoal);
+      margin-bottom: 14px;
+    }
+
+    .belief-body {
+      font-size: .95rem;
+      color: var(--mid);
+      font-weight: 300;
+      line-height: 1.75;
+    }
+
     /* ── SERVICES ── */
     #services { background: var(--charcoal); color: var(--white); }
     #services .section-label { color: var(--gold-light); }
@@ -659,6 +719,7 @@
       .hero-text { padding: 60px 28px; }
       .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 48px; }
       .services-grid { grid-template-columns: 1fr; }
+      .beliefs-grid { grid-template-columns: 1fr; }
       .container { padding: 0 24px; }
       nav { padding: 0 24px; }
       .nav-links { display: none; }
@@ -675,6 +736,7 @@
     <a href="#" class="nav-logo">Grace <span>&amp;</span> Truth <span>·</span> 은혜와 진리</a>
     <ul class="nav-links">
       <li><a href="#about" data-i18n="nav.about">About</a></li>
+      <li><a href="#beliefs" data-i18n="nav.beliefs">Beliefs</a></li>
       <li><a href="#services" data-i18n="nav.services">Services</a></li>
       <li><a href="#sermons" data-i18n="nav.sermons">Sermons</a></li>
       <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
@@ -693,14 +755,14 @@
   <section id="hero">
     <div class="hero-text">
       <p class="hero-label" data-i18n="hero.label">Welcome Home</p>
-      <h1 class="hero-h1" data-i18n-html="hero.title">A Place to<br><em>Belong,</em><br>Believe &amp; Grow</h1>
+      <h1 class="hero-h1" data-i18n-html="hero.title"><em>One Family.</em><br>One Word.<br>One Church.</h1>
       <p class="hero-body" data-i18n="hero.body">
-        We are a community rooted in faith, open to all. Whether you're taking your first steps or deepening your walk, you'll find a home here.
+        A multigenerational Korean-American congregation on the northwest side of Chicago — where whole families worship together, hear the same Word, and grow in faith across every generation.
       </p>
       <div class="hero-actions">
         <a href="#services" class="btn-primary" data-i18n="hero.primary">Plan Your Visit</a>
-        <a href="#sermons" class="btn-ghost">
-          <span data-i18n="hero.secondary">Watch a Sermon</span>
+        <a href="#about" class="btn-ghost">
+          <span data-i18n="hero.secondary">Our Story</span>
           <svg width="18" height="12" viewBox="0 0 18 12" fill="none"><path d="M12 1L17 6L12 11M1 6H17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         </a>
       </div>
@@ -708,8 +770,8 @@
     <div class="hero-visual">
       <div class="hero-cross"></div>
       <div class="hero-quote">
-        <span data-i18n="hero.quote">"For where two or three gather in my name, there am I with them."</span>
-        <cite data-i18n="hero.quoteCite">— Matthew 18:20</cite>
+        <span data-i18n="hero.quote">"As for me and my household, we will serve the LORD."</span>
+        <cite data-i18n="hero.quoteCite">— Joshua 24:15</cite>
       </div>
     </div>
   </section>
@@ -720,30 +782,15 @@
       <div class="about-grid">
         <div class="reveal">
           <p class="section-label" data-i18n="about.label">Our Story</p>
-          <h2 class="section-title" data-i18n-html="about.title">More Than a<br>Sunday <em>Service</em></h2>
+          <h2 class="section-title" data-i18n-html="about.title">For Families<br><em>Like Ours</em></h2>
           <div class="divider"></div>
           <div class="about-body">
-            <p data-i18n="about.p1">Founded on the belief that every person carries a unique story, our church has been a gathering place for the curious, the searching, and the faithful for over four decades.</p>
-            <p data-i18n="about.p2">We hold to the timeless truths of Scripture while remaining open, warm, and welcoming to everyone — wherever they are on their journey.</p>
+            <p data-i18n="about.p1">For over forty years, this congregation has gathered on the northwest side of Chicago.</p>
+            <p data-i18n="about.p2">We are a community of Korean-American families — grandparents, parents, and children — navigating two languages, two cultures, and one faith. We know what it is like when the family drives to different churches on Sunday morning because no single place feels like home for everyone. We were built for exactly that family.</p>
+            <p data-i18n="about.p3">Our pastor grew up in Korea, studied Scripture across five denominations, and works as a web developer during the week. He built a live AI worship translation tool so that a grandmother and her grandchild can sit in the same service and each hear the Word in their own language.</p>
+            <p data-i18n="about.p4">We are small. We know each other's names. And we are building something we believe is worth building.</p>
           </div>
-          <div class="about-values">
-            <div class="value-item">
-              <h4 data-i18n="about.v1Title">Authentic Faith</h4>
-              <p data-i18n="about.v1Body">Real, lived-out belief in everyday life.</p>
-            </div>
-            <div class="value-item">
-              <h4 data-i18n="about.v2Title">Open Doors</h4>
-              <p data-i18n="about.v2Body">Everyone is welcome, no exceptions.</p>
-            </div>
-            <div class="value-item">
-              <h4 data-i18n="about.v3Title">Deep Roots</h4>
-              <p data-i18n="about.v3Body">Scripture-centered, Spirit-led teaching.</p>
-            </div>
-            <div class="value-item">
-              <h4 data-i18n="about.v4Title">Generous Love</h4>
-              <p data-i18n="about.v4Body">Serving our city and the world.</p>
-            </div>
-          </div>
+          <a href="story.html" class="btn-primary about-cta" data-i18n="about.readMore">Read the Full Story</a>
         </div>
         <div class="about-stat-col reveal">
           <div class="stat-block">
@@ -751,13 +798,48 @@
             <div class="stat-label" data-i18n="about.s1Label">Years of Community</div>
           </div>
           <div class="stat-block">
-            <div class="stat-num">12<span></span></div>
-            <div class="stat-label" data-i18n="about.s2Label">Active Ministries</div>
+            <div class="stat-num">TBD</div>
+            <div class="stat-label" data-i18n="about.s2Label">Members &amp; Friends</div>
           </div>
           <div class="stat-block">
-            <div class="stat-num">800<span>+</span></div>
-            <div class="stat-label" data-i18n="about.s3Label">Congregation Members</div>
+            <div class="stat-num">TBD</div>
+            <div class="stat-label" data-i18n="about.s3Label">Active Ministries</div>
           </div>
+          <div class="stat-block">
+            <div class="stat-num">2</div>
+            <div class="stat-label" data-i18n="about.s4Label">Languages of Worship</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BELIEFS -->
+  <section id="beliefs">
+    <div class="container">
+      <p class="section-label" data-i18n="beliefs.label">What We're About</p>
+      <h2 class="section-title" data-i18n-html="beliefs.title">What We <em>Believe</em></h2>
+      <div class="divider"></div>
+      <div class="beliefs-grid reveal">
+        <div class="belief-card">
+          <span class="belief-icon" aria-hidden="true">🏠</span>
+          <h3 class="belief-title" data-i18n="beliefs.p1Title">Family-Centered Faith</h3>
+          <p class="belief-body" data-i18n="beliefs.p1Body">Every generation — children, youth, adults, and elders — meditates on the same passage every Sunday. Faith is formed at home, around the dinner table, by parents who are equipped to teach — not outsourced entirely to programs.</p>
+        </div>
+        <div class="belief-card">
+          <span class="belief-icon" aria-hidden="true">📖</span>
+          <h3 class="belief-title" data-i18n="beliefs.p2Title">Whole-Bible Teaching</h3>
+          <p class="belief-body" data-i18n="beliefs.p2Body">Sound preaching rooted in the full counsel of Scripture, including the Old Testament. We believe correct understanding of the Bible leads to correct understanding of the gospel — and that matters deeply.</p>
+        </div>
+        <div class="belief-card">
+          <span class="belief-icon" aria-hidden="true">🌍</span>
+          <h3 class="belief-title" data-i18n="beliefs.p3Title">Scripture Meets Monday</h3>
+          <p class="belief-body" data-i18n="beliefs.p3Body">The sermon has to survive Monday morning. Our teaching connects the ancient text to the real world our congregation actually lives in — work, family, doubt, joy, and everything in between.</p>
+        </div>
+        <div class="belief-card">
+          <span class="belief-icon" aria-hidden="true">✝️</span>
+          <h3 class="belief-title" data-i18n="beliefs.p4Title">The Kingdom, Here and Coming</h3>
+          <p class="belief-body" data-i18n="beliefs.p4Body">We believe the Kingdom of God is already present and not yet complete. We don't just wait for heaven — we live and serve and proclaim as people who believe this world matters to God right now.</p>
         </div>
       </div>
     </div>
@@ -772,24 +854,24 @@
       <div class="services-grid reveal">
         <div class="service-card">
           <div class="service-day" data-i18n="services.s1Day">Sunday</div>
-          <div class="service-time" data-i18n="services.s1Time">8:30 AM</div>
-          <div class="service-name" data-i18n="services.s1Name">Traditional Worship</div>
-          <div class="service-tag" data-i18n="services.s1Tag">Intimate</div>
+          <div class="service-time" data-i18n="services.s1Time">TBD</div>
+          <div class="service-name" data-i18n="services.s1Name">Korean Worship</div>
+          <div class="service-tag" data-i18n="services.s1Tag">한국어</div>
         </div>
         <div class="service-card">
           <div class="service-day" data-i18n="services.s2Day">Sunday</div>
-          <div class="service-time" data-i18n="services.s2Time">10:30 AM</div>
-          <div class="service-name" data-i18n="services.s2Name">Contemporary Service</div>
-          <div class="service-tag" data-i18n="services.s2Tag">Family-Friendly</div>
+          <div class="service-time" data-i18n="services.s2Time">TBD</div>
+          <div class="service-name" data-i18n="services.s2Name">English Worship</div>
+          <div class="service-tag" data-i18n="services.s2Tag">English</div>
         </div>
         <div class="service-card">
           <div class="service-day" data-i18n="services.s3Day">Wednesday</div>
-          <div class="service-time" data-i18n="services.s3Time">7:00 PM</div>
-          <div class="service-name" data-i18n="services.s3Name">Midweek Bible Study</div>
-          <div class="service-tag" data-i18n="services.s3Tag">Deep Dive</div>
+          <div class="service-time" data-i18n="services.s3Time">TBD</div>
+          <div class="service-name" data-i18n="services.s3Name">Bible Study</div>
+          <div class="service-tag" data-i18n="services.s3Tag">All Welcome</div>
         </div>
       </div>
-      <p class="services-note" data-i18n="services.note">All services held at 123 Faith Avenue · Childcare available at all Sunday services</p>
+      <p class="services-note" data-i18n="services.note">All services held at 6240 N Avondale Ave · Live Korean ↔ English translation available</p>
     </div>
   </section>
 
@@ -881,11 +963,11 @@
           </div>
           <div class="contact-detail">
             <div class="contact-detail-label" data-i18n="contact.phoneLabel">Phone</div>
-            <div class="contact-detail-value"><a href="tel:+10000000000">(000) 000-0000</a></div>
+            <div class="contact-detail-value">TBD</div>
           </div>
           <div class="contact-detail">
             <div class="contact-detail-label" data-i18n="contact.emailLabel">Email</div>
-            <div class="contact-detail-value"><a href="mailto:hello@graceandtruth.org">hello@graceandtruth.org</a></div>
+            <div class="contact-detail-value">TBD</div>
           </div>
         </div>
 
@@ -943,6 +1025,7 @@
         <div class="footer-logo">Grace <span>&amp;</span> Truth <span>·</span> 은혜와 진리</div>
         <ul class="footer-links">
           <li><a href="#about" data-i18n="nav.about">About</a></li>
+          <li><a href="#beliefs" data-i18n="nav.beliefs">Beliefs</a></li>
           <li><a href="#services" data-i18n="nav.services">Services</a></li>
           <li><a href="#sermons" data-i18n="nav.sermons">Sermons</a></li>
           <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>

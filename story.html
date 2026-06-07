@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our Story · Grace & Truth Church</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500&family=Noto+Serif+KR:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #f7f4ef;
+      --white: #ffffff;
+      --charcoal: #1c1c1c;
+      --mid: #5a5a52;
+      --gold: #b89a5e;
+      --gold-light: #d4b87a;
+      --border: #e4ddd2;
+      --nav-height: 72px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', 'Noto Sans KR', sans-serif;
+      background: var(--cream);
+      color: var(--charcoal);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    html[lang="ko"] .nav-logo,
+    html[lang="ko"] .story-title,
+    html[lang="ko"] .story-h2,
+    html[lang="ko"] .story-lead,
+    html[lang="ko"] .story-intro,
+    html[lang="ko"] .footer-logo {
+      font-family: 'Cormorant Garamond', 'Noto Serif KR', serif;
+    }
+    html[lang="ko"] body { font-family: 'DM Sans', 'Noto Sans KR', sans-serif; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: var(--nav-height);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px;
+      background: rgba(247,244,239,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      transition: box-shadow .3s;
+    }
+    nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,.06); }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+      color: var(--charcoal);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--gold); }
+
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-size: .82rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      font-size: .82rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--charcoal);
+      padding: 10px 22px;
+      text-decoration: none;
+      transition: background .25s;
+    }
+    .nav-cta:hover { background: var(--gold); }
+
+    .nav-right { display: flex; align-items: center; gap: 20px; }
+    .lang-toggle {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .76rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+    }
+    .lang-toggle button {
+      background: none;
+      border: none;
+      font: inherit;
+      letter-spacing: inherit;
+      color: var(--mid);
+      cursor: pointer;
+      padding: 4px 2px;
+      transition: color .2s;
+    }
+    .lang-toggle button:hover { color: var(--charcoal); }
+    .lang-toggle button.active { color: var(--gold); }
+    .lang-toggle .sep { color: var(--border); user-select: none; }
+
+    /* ── BUTTONS ── */
+    .btn-primary {
+      display: inline-block;
+      padding: 14px 32px;
+      background: var(--charcoal);
+      color: var(--white);
+      font-size: .82rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background .25s;
+    }
+    .btn-primary:hover { background: var(--gold); }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .82rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .btn-ghost:hover { color: var(--charcoal); }
+    .btn-ghost svg { transition: transform .2s; }
+    .btn-ghost:hover svg { transform: translateX(-4px); }
+
+    /* ── STORY PAGE ── */
+    .story-page {
+      padding: calc(var(--nav-height) + 80px) 32px 80px;
+      background: var(--cream);
+    }
+
+    .story-shell {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .story-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .76rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      margin-bottom: 40px;
+      transition: color .2s;
+    }
+    .story-back:hover { color: var(--gold); }
+    .story-back svg { transition: transform .2s; }
+    .story-back:hover svg { transform: translateX(-3px); }
+
+    .story-hero {
+      text-align: center;
+      margin-bottom: 72px;
+    }
+
+    .story-label {
+      font-size: .72rem;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .story-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 4.2vw, 3.8rem);
+      font-weight: 300;
+      line-height: 1.1;
+      letter-spacing: -.01em;
+      color: var(--charcoal);
+    }
+    .story-title em { font-style: italic; color: var(--gold); }
+
+    .story-byline {
+      margin-top: 28px;
+      font-size: .85rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--mid);
+    }
+    .story-byline::before {
+      content: '';
+      display: inline-block;
+      width: 32px;
+      height: 1px;
+      background: var(--gold);
+      vertical-align: middle;
+      margin-right: 14px;
+    }
+    .story-byline::after {
+      content: '';
+      display: inline-block;
+      width: 32px;
+      height: 1px;
+      background: var(--gold);
+      vertical-align: middle;
+      margin-left: 14px;
+    }
+
+    .story-article {
+      font-size: 1.02rem;
+      line-height: 1.85;
+      color: var(--charcoal);
+      font-weight: 300;
+    }
+
+    .story-article p { margin-bottom: 24px; }
+
+    .story-lead {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--mid);
+      text-align: center;
+      line-height: 1.6;
+      margin-bottom: 40px !important;
+    }
+
+    .story-intro {
+      text-align: center;
+      font-size: 1.05rem;
+      color: var(--mid);
+      margin-bottom: 0 !important;
+    }
+    .story-intro em { font-style: italic; color: var(--charcoal); font-weight: 400; }
+
+    .story-ornament {
+      text-align: center;
+      font-size: .9rem;
+      color: var(--gold);
+      letter-spacing: 0.4em;
+      margin: 64px 0;
+      opacity: .7;
+    }
+
+    .story-section { margin-bottom: 64px; }
+    .story-section:last-of-type { margin-bottom: 0; }
+
+    .story-h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.6rem, 2.6vw, 2rem);
+      font-weight: 500;
+      letter-spacing: -.005em;
+      color: var(--charcoal);
+      margin-bottom: 28px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+    .story-h2::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -1px;
+      width: 48px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .story-cta {
+      margin-top: 80px;
+      padding-top: 56px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--charcoal);
+      color: rgba(255,255,255,.4);
+      padding: 40px 0;
+    }
+    .footer-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: rgba(255,255,255,.7);
+      font-weight: 400;
+    }
+    .footer-logo span { color: var(--gold-light); }
+    footer p { font-size: .78rem; }
+    .footer-links { display: flex; gap: 24px; list-style: none; }
+    .footer-links a {
+      font-size: .75rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.3);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .footer-links a:hover { color: var(--gold-light); }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .story-page { padding: calc(var(--nav-height) + 56px) 22px 64px; }
+      .story-hero { margin-bottom: 56px; }
+      .footer-inner { flex-direction: column; gap: 16px; padding: 0 24px; text-align: center; }
+      .footer-links { flex-wrap: wrap; justify-content: center; }
+      .story-cta { gap: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">Grace <span>&amp;</span> Truth <span>·</span> 은혜와 진리</a>
+    <ul class="nav-links">
+      <li><a href="index.html#about" data-i18n="nav.about">About</a></li>
+      <li><a href="index.html#beliefs" data-i18n="nav.beliefs">Beliefs</a></li>
+      <li><a href="index.html#services" data-i18n="nav.services">Services</a></li>
+      <li><a href="index.html#sermons" data-i18n="nav.sermons">Sermons</a></li>
+      <li><a href="index.html#contact" data-i18n="nav.contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="lang-toggle" aria-label="Language">
+        <button type="button" data-lang="en">EN</button>
+        <span class="sep">|</span>
+        <button type="button" data-lang="ko">KO</button>
+      </div>
+      <a href="index.html#services" class="nav-cta" data-i18n="nav.cta">Join Us</a>
+    </div>
+  </nav>
+
+  <main class="story-page">
+    <div class="story-shell">
+
+      <a href="index.html" class="story-back">
+        <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M5 1L1 5L5 9M1 5H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span data-i18n="story.back">Back to Home</span>
+      </a>
+
+      <header class="story-hero">
+        <p class="story-label" data-i18n="story.label">Our Story</p>
+        <h1 class="story-title" data-i18n-html="story.title">A Letter from<br>Our <em>Pastor</em></h1>
+        <p class="story-byline" data-i18n="story.byline">Pastor Namju Bae</p>
+      </header>
+
+      <article class="story-article">
+
+        <p class="story-lead" data-i18n="story.lead">For over forty years, this congregation has gathered on the northwest side of Chicago — a community of Korean-American families spanning grandparents, parents, and children, carrying their faith across generations and across an ocean.</p>
+
+        <p class="story-intro" data-i18n-html="story.intro">But a church with history still has to ask: <em>what are we becoming?</em></p>
+
+        <div class="story-ornament" aria-hidden="true">✦</div>
+
+        <section class="story-section">
+          <h2 class="story-h2" data-i18n="story.s1Title">A Mother's Faith</h2>
+          <p data-i18n="story.s1p1">My conviction about the church began not in a seminary classroom but in childhood.</p>
+          <p data-i18n="story.s1p2">My mother was not a Christian before she married. Then my older brother became seriously ill — a condition no one could explain or cure. God healed him. That was the beginning of her faith.</p>
+          <p data-i18n="story.s1p3">What followed was something I watched as a young boy: my mother attending church faithfully, week after week, traveling a long distance, through difficulty, without giving up. She never made a performance of it. She simply kept showing up.</p>
+          <p data-i18n="story.s1p4">I did not fully understand then what I was seeing. I understand now. She was being the primary faith teacher in our home — not by lecturing, but by living. Her faith was visible. It shaped mine.</p>
+          <p data-i18n="story.s1p5">That image has never left me.</p>
+        </section>
+
+        <section class="story-section">
+          <h2 class="story-h2" data-i18n="story.s2Title">The Family We Are — and the Families We Serve</h2>
+          <p data-i18n="story.s2p1">I grew up in Korea, completed my university education there, and came to the United States as an adult. Korean is still the language I think in. My wife grew up here — English is her language. Our child is growing up in both.</p>
+          <p data-i18n="story.s2p2">There are many families like ours in this city.</p>
+          <p data-i18n="story.s2p3">In these families, Sunday morning presents a quiet but real problem. Grandparents are most comfortable in Korean. The younger generation reaches more naturally for English. Parents are somewhere in between, code-switching through the week. And so when it comes to church, the family splits — different services, different congregations, different communities of faith. Each person goes where the language feels right.</p>
+          <p data-i18n="story.s2p4">I understand why this happens. But I believe it quietly breaks something.</p>
+          <p data-i18n="story.s2p5">If the whole family cannot worship together, they cannot grow together. They cannot carry the same text home. They cannot have the conversations that build faith across a dinner table. The family that worships apart tends to believe apart — and in the hard seasons, that distance shows.</p>
+          <p data-i18n="story.s2p6">This is why I built Worship Translation — a live AI interpretation tool that allows a sermon preached in one language to be received simultaneously in another. It is not a perfect solution. But it is my attempt to remove one of the real barriers that keeps Korean-American families from worshipping in the same room, hearing the same Word, together.</p>
+          <p data-i18n="story.s2p7">A family that can worship together can stay together in faith. That is what I am trying to build.</p>
+        </section>
+
+        <section class="story-section">
+          <h2 class="story-h2" data-i18n="story.s3Title">What I Am Building Here</h2>
+          <p data-i18n="story.s3p1">I am dreaming of a family-centered church — and I mean that in a specific way.</p>
+          <p data-i18n="story.s3p2">When grandparents, parents, and children worship together — when the Sunday school class, the youth group, and the adult congregation are all meditating on the same passage on the same Sunday — something happens that no church program can manufacture. The family drives home with a shared text. It comes up at dinner. A grandmother mentions something the passage reminded her of. A teenager asks a question they wouldn't have asked a pastor. A parent realizes they need to actually know what they believe in order to answer it.</p>
+          <p data-i18n="story.s3p3">The pastor's role is not to replace that conversation. It is to resource it.</p>
+        </section>
+
+        <section class="story-section">
+          <h2 class="story-h2" data-i18n="story.s4Title">On Teaching</h2>
+          <p data-i18n="story.s4p1">I have spent many years studying Scripture — an M.Div. from a Methodist seminary, two Th.M. degrees from Baptist and Lutheran institutions, and doctoral work in Old Testament at a Baptist school. I grew up in the Presbyterian church and was ordained in the Christian Reformed Church.</p>
+          <p data-i18n="story.s4p2">I pursued that education because I believe the church suffers most when it mishandles the Word of God.</p>
+          <p data-i18n="story.s4p3">I chose Old Testament studies because without a correct understanding of the Old Testament, the entire Bible remains partially closed. The New Testament is the fulfillment of what the Old Testament promised. You cannot fully understand the cross without understanding the sacrificial system. You cannot fully understand grace without understanding the law. You cannot fully understand the Kingdom without understanding the covenant.</p>
+          <p data-i18n-html="story.s4p4">I also remember the moment hermeneutics finally made sense to me. I had taken the course several times. Then once, I looked at the table of contents of the assigned textbook and saw that the final chapter was on <em>application.</em> It reoriented everything. All the tools of interpretation exist for one purpose: to help people live. God did not give us the Bible merely to be studied. He gave it to be lived.</p>
+          <p data-i18n="story.s4p5">That is what I am trying to preach — the whole Bible, correctly understood, honestly applied to the lives people are actually living. I work as a web developer for the state of Illinois during the week. I know what Monday looks like. The sermon has to be able to survive Monday.</p>
+        </section>
+
+        <section class="story-section">
+          <h2 class="story-h2" data-i18n="story.s5Title">What We Believe About the Church's Purpose</h2>
+          <p data-i18n-html="story.s5p1">There is a phrase in theology: <em>already but not yet.</em></p>
+          <p data-i18n="story.s5p2">The Kingdom of God is not only a future hope. It broke into history when Jesus came. It is present now — in communities of faith, in acts of mercy, in the proclamation of the gospel, in families who love one another well. We do not merely endure this life while waiting for heaven. We participate in what God is already doing on earth.</p>
+          <p data-i18n="story.s5p3">And yet the Kingdom is not yet complete. Christ has not yet returned. Suffering is real. Justice is incomplete. We hold our work and our hopes with open hands, knowing that God alone builds what lasts.</p>
+          <p data-i18n="story.s5p4">This means our congregation is called to both: to enjoy the real blessings of life before God on this earth, and to spend ourselves in missionary work, in serving neighbors, in proclaiming the gospel — because this world matters to God, and so do the people in it.</p>
+          <p data-i18n="story.s5p5">We are not a church that tells people to simply wait for heaven. We are a church that tries to live the Kingdom now, together, as families, one Sunday at a time.</p>
+        </section>
+
+        <section class="story-section">
+          <h2 class="story-h2" data-i18n="story.s6Title">An Honest Invitation</h2>
+          <p data-i18n="story.s6p1">If you are looking for a church where things are kept simple and comfortable — where the sermon is short and the expectations are low — this may not be the right fit.</p>
+          <p data-i18n="story.s6p2">But if you are a Korean-American family navigating two languages, two cultures, and two generations under one roof — and you are looking for a place where all of you can belong, grow, and worship together — then we would love to meet you.</p>
+          <p data-i18n="story.s6p3">We are a small congregation. We know each other's names. We have been through hard seasons together and we expect more ahead. But we are here, and we are building something we believe is worth building.</p>
+          <p data-i18n="story.s6p4">Come and see.</p>
+        </section>
+
+        <div class="story-cta">
+          <a href="index.html#contact" class="btn-primary" data-i18n="story.ctaPrimary">Plan Your Visit</a>
+          <a href="index.html" class="btn-ghost">
+            <svg width="18" height="12" viewBox="0 0 18 12" fill="none"><path d="M6 1L1 6L6 11M1 6H17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span data-i18n="story.ctaSecondary">Back to Home</span>
+          </a>
+        </div>
+
+      </article>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">Grace <span>&amp;</span> Truth <span>·</span> 은혜와 진리</div>
+      <ul class="footer-links">
+        <li><a href="index.html#about" data-i18n="nav.about">About</a></li>
+        <li><a href="index.html#beliefs" data-i18n="nav.beliefs">Beliefs</a></li>
+        <li><a href="index.html#services" data-i18n="nav.services">Services</a></li>
+        <li><a href="index.html#sermons" data-i18n="nav.sermons">Sermons</a></li>
+        <li><a href="index.html#contact" data-i18n="nav.contact">Contact</a></li>
+      </ul>
+      <p data-i18n="footer.copyright">© 2025 Grace &amp; Truth. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll shadow
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // ── i18n ──
+    const SUPPORTED = ['en', 'ko'];
+    const LS_KEY = 'lang';
+    const dictCache = {};
+
+    function detectInitialLang() {
+      const stored = localStorage.getItem(LS_KEY);
+      if (stored && SUPPORTED.includes(stored)) return stored;
+      const browser = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+      return browser.startsWith('ko') ? 'ko' : 'en';
+    }
+
+    function resolveKey(dict, key) {
+      return key.split('.').reduce((o, k) => (o == null ? o : o[k]), dict);
+    }
+
+    async function loadDict(lang) {
+      if (dictCache[lang]) return dictCache[lang];
+      const res = await fetch(`./lang/${lang}.json`, { cache: 'no-cache' });
+      if (!res.ok) throw new Error(`Failed to load ${lang}.json`);
+      const dict = await res.json();
+      dictCache[lang] = dict;
+      return dict;
+    }
+
+    async function applyLang(lang) {
+      if (!SUPPORTED.includes(lang)) lang = 'en';
+      let dict;
+      try {
+        dict = await loadDict(lang);
+      } catch (err) {
+        console.error(err);
+        return;
+      }
+
+      document.documentElement.lang = (dict.meta && dict.meta.htmlLang) || lang;
+      // Story page uses its own title if defined
+      if (dict.story && dict.story.metaTitle) {
+        document.title = dict.story.metaTitle;
+      } else if (dict.meta && dict.meta.title) {
+        document.title = dict.meta.title;
+      }
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const v = resolveKey(dict, el.getAttribute('data-i18n'));
+        if (v != null) el.textContent = v;
+      });
+      document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const v = resolveKey(dict, el.getAttribute('data-i18n-html'));
+        if (v != null) el.innerHTML = v;
+      });
+
+      localStorage.setItem(LS_KEY, lang);
+      document.querySelectorAll('.lang-toggle button').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+        btn.setAttribute('aria-pressed', btn.dataset.lang === lang ? 'true' : 'false');
+      });
+    }
+
+    document.querySelectorAll('.lang-toggle button').forEach(btn => {
+      btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+    });
+
+    applyLang(detectInitialLang());
+  </script>
+</body>
+</html>
