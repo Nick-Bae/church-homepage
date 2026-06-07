@@ -14,7 +14,7 @@
   "hero": {
     "label": "Welcome Home",
     "title": "<em>One Family.</em><br>One Word.<br>One Church.",
-    "body": "A multigenerational Korean-American congregation on the northwest side of Chicago — where whole families worship together, hear the same Word, and grow in faith across every generation.",
+    "body": "Chicago Ark Church is a warm community where families and generations are built up in the Word as we walk the journey of faith together.",
     "primary": "Plan Your Visit",
     "secondary": "Our Story",
     "quote": "\"As for me and my household, we will serve the LORD.\"",
@@ -23,10 +23,9 @@
   "about": {
     "label": "Our Story",
     "title": "For Families<br><em>Like Ours</em>",
-    "p1": "For over forty years, this congregation has gathered on the northwest side of Chicago.",
-    "p2": "We are a community of Korean-American families — grandparents, parents, and children — navigating two languages, two cultures, and one faith. We know what it is like when the family drives to different churches on Sunday morning because no single place feels like home for everyone. We were built for exactly that family.",
-    "p3": "Our pastor grew up in Korea, studied Scripture across five denominations, and works as a web developer during the week. He built a live AI worship translation tool so that a grandmother and her grandchild can sit in the same service and each hear the Word in their own language.",
-    "p4": "We are small. We know each other's names. And we are building something we believe is worth building.",
+    "p1": "Chicago Ark Church is a church for families seeking to live out their faith across two languages and two cultures.",
+    "p2": "A family may come to church together yet sometimes feel as though each generation lives in a different world when hearing the Word. That is why we desire children, young people, and adults to worship in settings suited to them while sharing the same Scripture each week and growing together in one faith.",
+    "p3": "Sometimes all generations worship together, and at other times each generation hears the Word in the language and at the level that speaks to them. Yet the Word we hold onto is one. Chicago Ark Church is a community walking together to strengthen families, connect generations, and share the gospel with the next generation.",
     "readMore": "Read the Full Story",
     "s1Label": "Years of Community",
     "s2Label": "Members & Friends",

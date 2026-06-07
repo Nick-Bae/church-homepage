@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Grace & Truth Church</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500&family=Noto+Serif+KR:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Manrope:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -22,14 +22,14 @@
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'DM Sans', 'Noto Sans KR', sans-serif;
+      font-family: 'Inter', 'Noto Sans KR', sans-serif;
       background: var(--cream);
       color: var(--charcoal);
       line-height: 1.6;
       overflow-x: hidden;
     }
 
-    /* Korean serif fallback for Cormorant headings */
+    /* Keep Korean and English headings in the same clean sans-serif style. */
     html[lang="ko"] .nav-logo,
     html[lang="ko"] .hero-h1,
     html[lang="ko"] .section-title,
@@ -40,9 +40,9 @@
     html[lang="ko"] .contact-detail-value,
     html[lang="ko"] .footer-logo,
     html[lang="ko"] .hero-quote {
-      font-family: 'Cormorant Garamond', 'Noto Serif KR', serif;
+      font-family: 'Manrope', 'Noto Sans KR', sans-serif;
     }
-    html[lang="ko"] body { font-family: 'DM Sans', 'Noto Sans KR', sans-serif; }
+    html[lang="ko"] body { font-family: 'Inter', 'Noto Sans KR', sans-serif; }
 
     /* ── NAV ── */
     nav {
@@ -59,7 +59,7 @@
     nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,.06); }
 
     .nav-logo {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Manrope', 'Noto Sans KR', sans-serif;
       font-size: 1.4rem;
       font-weight: 600;
       letter-spacing: .04em;
@@ -143,7 +143,7 @@
     }
 
     .hero-h1 {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Manrope', 'Noto Sans KR', sans-serif;
       font-size: clamp(3rem, 5vw, 5.5rem);
       font-weight: 300;
       line-height: 1.08;
@@ -152,7 +152,7 @@
       opacity: 0;
       animation: fadeUp .8s .35s forwards;
     }
-    .hero-h1 em { font-style: italic; color: var(--gold); }
+    .hero-h1 em { font-style: normal; color: var(--gold); }
 
     .hero-body {
       margin-top: 28px;
@@ -205,37 +205,72 @@
     .hero-visual {
       position: relative;
       overflow: hidden;
-      background: var(--charcoal);
+      isolation: isolate;
+      background: linear-gradient(145deg, #1c1c1c 0%, #24211d 55%, #1b1a18 100%);
     }
 
     .hero-visual::before {
       content: '';
       position: absolute; inset: 0;
       background:
-        radial-gradient(ellipse 60% 60% at 60% 40%, rgba(184,154,94,.18) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 50% at 30% 70%, rgba(184,154,94,.10) 0%, transparent 60%);
+        radial-gradient(ellipse 48% 46% at 50% 43%, rgba(225,199,143,.19) 0%, rgba(184,154,94,.08) 40%, transparent 72%),
+        radial-gradient(ellipse 55% 48% at 18% 82%, rgba(184,154,94,.08) 0%, transparent 68%),
+        radial-gradient(ellipse 42% 42% at 92% 12%, rgba(255,244,219,.04) 0%, transparent 72%);
+      z-index: -3;
+    }
+
+    .hero-curves {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+    }
+    .hero-curves::before,
+    .hero-curves::after {
+      content: '';
+      position: absolute;
+      border: 1px solid rgba(225,199,143,.12);
+      border-radius: 50%;
+      transform: rotate(-18deg);
+    }
+    .hero-curves::before {
+      width: 78%;
+      height: 58%;
+      top: 18%;
+      left: 24%;
+    }
+    .hero-curves::after {
+      width: 96%;
+      height: 72%;
+      top: 8%;
+      left: 14%;
+      border-color: rgba(255,255,255,.055);
     }
 
     .hero-cross {
       position: absolute;
       top: 50%; left: 50%;
       transform: translate(-50%, -50%);
-      width: 110px; height: 220px;
-      opacity: .12;
+      width: 140px; height: 220px;
+      filter: drop-shadow(0 0 18px rgba(225,199,143,.24));
     }
     .hero-cross::before, .hero-cross::after {
-      content: ''; position: absolute; background: var(--white);
-      border-radius: 2px;
+      content: '';
+      position: absolute;
+      background: linear-gradient(135deg, rgba(255,255,255,.16), rgba(235,215,174,.12));
+      border: 1px solid rgba(255,255,255,.025);
+      border-radius: 5px;
     }
-    .hero-cross::before { width: 100%; height: 24px; top: 30%; transform: translateY(-50%); }
-    .hero-cross::after  { width: 24px; height: 100%; left: 50%; transform: translateX(-50%); }
+    .hero-cross::before { width: 100%; height: 30px; top: 39%; transform: translateY(-50%); }
+    .hero-cross::after  { width: 30px; height: calc(100% + 18px); left: 50%; transform: translateX(-50%); }
 
     .hero-quote {
       position: absolute;
       bottom: 64px; left: 40px; right: 40px;
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
+      font-family: 'Manrope', 'Noto Sans KR', sans-serif;
+      font-style: normal;
       font-size: 1.15rem;
+      font-weight: 300;
       color: rgba(255,255,255,.7);
       line-height: 1.6;
       border-left: 2px solid var(--gold);
@@ -247,7 +282,7 @@
       display: block;
       margin-top: 8px;
       font-style: normal;
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', 'Noto Sans KR', sans-serif;
       font-size: .75rem;
       letter-spacing: .12em;
       text-transform: uppercase;
@@ -268,12 +303,12 @@
     }
 
     .section-title {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Manrope', 'Noto Sans KR', sans-serif;
       font-size: clamp(2.2rem, 3.5vw, 3.2rem);
       font-weight: 300;
       line-height: 1.15;
     }
-    .section-title em { font-style: italic; color: var(--gold); }
+    .section-title em { font-style: normal; color: var(--gold); }
 
     .divider {
       width: 48px; height: 1px;
@@ -308,7 +343,7 @@
 
     .value-item { border-top: 1px solid var(--border); padding-top: 16px; }
     .value-item h4 {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Manrope', 'Noto Sans KR', sans-serif;
       font-size: 1.1rem;
       font-weight: 600;
       margin-bottom: 6px;
@@ -342,7 +377,7 @@
     .stat-block:hover::after { width: 100%; }
 
     .stat-num {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Manrope', 'Noto Sans KR', sans-serif;
       font-size: 3.5rem;
       font-weight: 300;
       line-height: 1;
@@ -396,14 +431,34 @@
     .belief-card:hover::after { width: 100%; }
 
     .belief-icon {
-      font-size: 1.9rem;
-      display: block;
-      margin-bottom: 16px;
-      line-height: 1;
+      width: 42px;
+      height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      color: var(--gold);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      transition: color .25s, border-color .25s, background .25s;
+    }
+    .belief-icon svg {
+      width: 21px;
+      height: 21px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .belief-card:hover .belief-icon {
+      color: var(--white);
+      border-color: var(--gold);
+      background: var(--gold);
     }
 
     .belief-title {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Manrope', 'Noto Sans KR', sans-serif;
       font-size: 1.55rem;
       font-weight: 500;
       letter-spacing: -.005em;
@@ -442,7 +497,7 @@
     .service-card:hover { background: #252525; }
 
     .service-day {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Manrope', 'Noto Sans KR', sans-serif;
       font-size: 1.5rem;
       font-weight: 300;
       color: var(--gold-light);
@@ -549,7 +604,7 @@
       margin-bottom: 6px;
     }
     .sermon-title {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Manrope', 'Noto Sans KR', sans-serif;
       font-size: 1.25rem;
       font-weight: 400;
       color: var(--charcoal);
@@ -588,7 +643,7 @@
       margin-bottom: 10px;
     }
     .contact-detail-value {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Manrope', 'Noto Sans KR', sans-serif;
       font-size: 1.35rem;
       font-weight: 300;
       line-height: 1.5;
@@ -619,7 +674,7 @@
       padding: 12px 16px;
       border: 1px solid var(--border);
       background: var(--cream);
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', 'Noto Sans KR', sans-serif;
       font-size: .92rem;
       color: var(--charcoal);
       outline: none;
@@ -635,7 +690,7 @@
       padding: 14px 32px;
       background: var(--charcoal);
       color: var(--white);
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', 'Noto Sans KR', sans-serif;
       font-size: .82rem;
       letter-spacing: .1em;
       text-transform: uppercase;
@@ -678,7 +733,7 @@
       justify-content: space-between;
     }
     .footer-logo {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Manrope', 'Noto Sans KR', sans-serif;
       font-size: 1.1rem;
       color: rgba(255,255,255,.7);
       font-weight: 400;
@@ -757,7 +812,7 @@
       <p class="hero-label" data-i18n="hero.label">Welcome Home</p>
       <h1 class="hero-h1" data-i18n-html="hero.title"><em>One Family.</em><br>One Word.<br>One Church.</h1>
       <p class="hero-body" data-i18n="hero.body">
-        A multigenerational Korean-American congregation on the northwest side of Chicago — where whole families worship together, hear the same Word, and grow in faith across every generation.
+        Chicago Ark Church is a warm community where families and generations are built up in the Word as we walk the journey of faith together.
       </p>
       <div class="hero-actions">
         <a href="#services" class="btn-primary" data-i18n="hero.primary">Plan Your Visit</a>
@@ -768,6 +823,7 @@
       </div>
     </div>
     <div class="hero-visual">
+      <div class="hero-curves" aria-hidden="true"></div>
       <div class="hero-cross"></div>
       <div class="hero-quote">
         <span data-i18n="hero.quote">"As for me and my household, we will serve the LORD."</span>
@@ -785,10 +841,9 @@
           <h2 class="section-title" data-i18n-html="about.title">For Families<br><em>Like Ours</em></h2>
           <div class="divider"></div>
           <div class="about-body">
-            <p data-i18n="about.p1">For over forty years, this congregation has gathered on the northwest side of Chicago.</p>
-            <p data-i18n="about.p2">We are a community of Korean-American families — grandparents, parents, and children — navigating two languages, two cultures, and one faith. We know what it is like when the family drives to different churches on Sunday morning because no single place feels like home for everyone. We were built for exactly that family.</p>
-            <p data-i18n="about.p3">Our pastor grew up in Korea, studied Scripture across five denominations, and works as a web developer during the week. He built a live AI worship translation tool so that a grandmother and her grandchild can sit in the same service and each hear the Word in their own language.</p>
-            <p data-i18n="about.p4">We are small. We know each other's names. And we are building something we believe is worth building.</p>
+            <p data-i18n="about.p1">Chicago Ark Church is a church for families seeking to live out their faith across two languages and two cultures.</p>
+            <p data-i18n="about.p2">A family may come to church together yet sometimes feel as though each generation lives in a different world when hearing the Word. That is why we desire children, young people, and adults to worship in settings suited to them while sharing the same Scripture each week and growing together in one faith.</p>
+            <p data-i18n="about.p3">Sometimes all generations worship together, and at other times each generation hears the Word in the language and at the level that speaks to them. Yet the Word we hold onto is one. Chicago Ark Church is a community walking together to strengthen families, connect generations, and share the gospel with the next generation.</p>
           </div>
           <a href="story.html" class="btn-primary about-cta" data-i18n="about.readMore">Read the Full Story</a>
         </div>
@@ -822,22 +877,46 @@
       <div class="divider"></div>
       <div class="beliefs-grid reveal">
         <div class="belief-card">
-          <span class="belief-icon" aria-hidden="true">🏠</span>
+          <span class="belief-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M3 11.5 12 4l9 7.5"/>
+              <path d="M5.5 10v9.5h13V10"/>
+              <path d="M9.5 19.5v-6h5v6"/>
+            </svg>
+          </span>
           <h3 class="belief-title" data-i18n="beliefs.p1Title">Family-Centered Faith</h3>
           <p class="belief-body" data-i18n="beliefs.p1Body">Every generation — children, youth, adults, and elders — meditates on the same passage every Sunday. Faith is formed at home, around the dinner table, by parents who are equipped to teach — not outsourced entirely to programs.</p>
         </div>
         <div class="belief-card">
-          <span class="belief-icon" aria-hidden="true">📖</span>
+          <span class="belief-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M4 5.5h4.5A3.5 3.5 0 0 1 12 9v10a3.5 3.5 0 0 0-3.5-3.5H4z"/>
+              <path d="M20 5.5h-4.5A3.5 3.5 0 0 0 12 9v10a3.5 3.5 0 0 1 3.5-3.5H20z"/>
+            </svg>
+          </span>
           <h3 class="belief-title" data-i18n="beliefs.p2Title">Whole-Bible Teaching</h3>
           <p class="belief-body" data-i18n="beliefs.p2Body">Sound preaching rooted in the full counsel of Scripture, including the Old Testament. We believe correct understanding of the Bible leads to correct understanding of the gospel — and that matters deeply.</p>
         </div>
         <div class="belief-card">
-          <span class="belief-icon" aria-hidden="true">🌍</span>
+          <span class="belief-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="8"/>
+              <path d="M4 12h16"/>
+              <path d="M12 4c2.2 2.2 3.3 4.9 3.3 8S14.2 17.8 12 20"/>
+              <path d="M12 4c-2.2 2.2-3.3 4.9-3.3 8S9.8 17.8 12 20"/>
+            </svg>
+          </span>
           <h3 class="belief-title" data-i18n="beliefs.p3Title">Scripture Meets Monday</h3>
           <p class="belief-body" data-i18n="beliefs.p3Body">The sermon has to survive Monday morning. Our teaching connects the ancient text to the real world our congregation actually lives in — work, family, doubt, joy, and everything in between.</p>
         </div>
         <div class="belief-card">
-          <span class="belief-icon" aria-hidden="true">✝️</span>
+          <span class="belief-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 3v18"/>
+              <path d="M7.5 8h9"/>
+              <path d="M5 21h14"/>
+            </svg>
+          </span>
           <h3 class="belief-title" data-i18n="beliefs.p4Title">The Kingdom, Here and Coming</h3>
           <p class="belief-body" data-i18n="beliefs.p4Body">We believe the Kingdom of God is already present and not yet complete. We don't just wait for heaven — we live and serve and proclaim as people who believe this world matters to God right now.</p>
         </div>
@@ -973,7 +1052,7 @@
 
         <div class="reveal">
           <p class="section-label" style="visibility:hidden">—</p>
-          <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;margin-bottom:28px;" data-i18n="contact.formTitle">Send Us a Message</h3>
+          <h3 style="font-family:'Manrope','Noto Sans KR',sans-serif;font-size:1.6rem;font-weight:400;margin-bottom:28px;" data-i18n="contact.formTitle">Send Us a Message</h3>
           <form class="contact-form" id="contact-form"
                 action="https://formspree.io/f/xgoqjjwl"
                 method="POST"
