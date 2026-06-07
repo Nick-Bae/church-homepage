@@ -17,6 +17,8 @@
       --gold-light: #d4b87a;
       --border: #e4ddd2;
       --nav-height: 72px;
+      --radius: 6px;
+      --radius-small: 4px;
     }
 
     html { scroll-behavior: smooth; }
@@ -88,6 +90,7 @@
       color: var(--white);
       background: var(--charcoal);
       padding: 10px 22px;
+      border-radius: var(--radius-small);
       text-decoration: none;
       transition: background .25s;
     }
@@ -179,6 +182,7 @@
       padding: 14px 32px;
       background: var(--charcoal);
       color: var(--white);
+      border-radius: var(--radius-small);
       font-size: .82rem;
       letter-spacing: .1em;
       text-transform: uppercase;
@@ -370,6 +374,7 @@
       padding: 36px;
       background: var(--cream);
       border: 1px solid var(--border);
+      border-radius: var(--radius);
       position: relative;
       overflow: hidden;
       transition: border-color .25s;
@@ -420,6 +425,7 @@
       padding: 40px 36px;
       background: var(--white);
       border: 1px solid var(--border);
+      border-radius: var(--radius);
       position: relative;
       overflow: hidden;
       transition: border-color .25s, transform .25s, box-shadow .25s;
@@ -494,6 +500,8 @@
       gap: 1px;
       background: rgba(255,255,255,.08);
       border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius);
+      overflow: hidden;
     }
 
     .service-card {
@@ -535,6 +543,7 @@
       letter-spacing: .1em;
       text-transform: uppercase;
       border: 1px solid rgba(184,154,94,.4);
+      border-radius: var(--radius-small);
       color: var(--gold-light);
     }
 
@@ -579,6 +588,7 @@
       padding: 28px 32px;
       background: var(--white);
       border: 1px solid var(--border);
+      border-radius: var(--radius);
       text-decoration: none;
       color: inherit;
       transition: border-color .25s, box-shadow .25s;
@@ -681,6 +691,7 @@
     .form-field select {
       padding: 12px 16px;
       border: 1px solid var(--border);
+      border-radius: var(--radius-small);
       background: var(--cream);
       font-family: 'Inter', 'Noto Sans KR', sans-serif;
       font-size: .92rem;
@@ -703,11 +714,17 @@
       letter-spacing: .1em;
       text-transform: uppercase;
       border: none;
+      border-radius: var(--radius-small);
       cursor: pointer;
       transition: background .25s;
       align-self: flex-start;
     }
     .form-submit:hover { background: var(--gold); }
+
+    #form-success,
+    #form-error {
+      border-radius: var(--radius-small);
+    }
 
     /* ── MAP ── */
     .map-box {
@@ -716,6 +733,7 @@
       width: 100%;
       height: 260px;
       border: 1px solid var(--border);
+      border-radius: var(--radius);
       margin-bottom: 32px;
       position: relative;
       overflow: hidden;
@@ -834,8 +852,8 @@
       <div class="hero-curves" aria-hidden="true"></div>
       <div class="hero-cross"></div>
       <div class="hero-quote">
-        <span data-i18n="hero.quote">"As for me and my household, we will serve the LORD."</span>
-        <cite data-i18n="hero.quoteCite">— Joshua 24:15</cite>
+        <span data-i18n="hero.quote">"그가 행하신 일을 후대에 전하리로다."</span>
+        <cite data-i18n="hero.quoteCite">— 시편 78:4</cite>
       </div>
     </div>
   </section>
@@ -908,10 +926,9 @@
         <div class="belief-card">
           <span class="belief-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24">
-              <circle cx="12" cy="12" r="8"/>
-              <path d="M4 12h16"/>
-              <path d="M12 4c2.2 2.2 3.3 4.9 3.3 8S14.2 17.8 12 20"/>
-              <path d="M12 4c-2.2 2.2-3.3 4.9-3.3 8S9.8 17.8 12 20"/>
+              <rect x="4" y="5.5" width="16" height="14" rx="2"/>
+              <path d="M8 3.5v4M16 3.5v4M4 9.5h16"/>
+              <path d="m8.5 14 2.2 2.2 4.8-5"/>
             </svg>
           </span>
           <h3 class="belief-title" data-i18n="beliefs.p3Title">Scripture Meets Monday</h3>
