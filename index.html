@@ -148,7 +148,7 @@
     .hero-h1 {
       font-family: 'Manrope', 'Noto Sans KR', sans-serif;
       font-size: clamp(3rem, 5vw, 5.5rem);
-      font-weight: 400;
+      font-weight: 350;
       line-height: 1.08;
       letter-spacing: -.01em;
       color: var(--charcoal);
@@ -409,6 +409,44 @@
     .about-cta {
       margin-top: 36px;
       align-self: flex-start;
+    }
+
+    .about-links {
+      margin-top: 36px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .about-link {
+      display: block;
+      padding: 20px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--charcoal);
+      text-decoration: none;
+      transition: border-color .25s, transform .25s, background .25s;
+    }
+    .about-link:hover {
+      border-color: var(--gold);
+      background: var(--cream);
+      transform: translateY(-2px);
+    }
+    .about-link-label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: .7rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .about-link-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      font-family: 'Manrope', 'Noto Sans KR', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
     }
 
     /* ── BELIEFS ── */
@@ -799,6 +837,7 @@
       .hero-visual { display: none; }
       .hero-text { padding: 60px 28px; }
       .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+      .about-links { grid-template-columns: 1fr; }
       .services-grid { grid-template-columns: 1fr; }
       .beliefs-grid { grid-template-columns: 1fr; }
       .container { padding: 0 24px; }
@@ -872,6 +911,16 @@
             <p data-i18n="about.p3">Sometimes all generations worship together, and at other times each generation hears the Word in the language and at the level that speaks to them. Yet the Word we hold onto is one. Chicago Ark Church is a community walking together to strengthen families, connect generations, and share the gospel with the next generation.</p>
           </div>
           <a href="story.html" class="btn-primary about-cta" data-i18n="about.readMore">Read the Full Story</a>
+          <div class="about-links">
+            <a href="pastor.html" class="about-link">
+              <span class="about-link-label" data-i18n="about.pastorLabel">Meet Our Pastor</span>
+              <span class="about-link-title"><span data-i18n="about.pastorLink">Pastor Introduction</span><span aria-hidden="true">→</span></span>
+            </a>
+            <a href="denomination.html" class="about-link">
+              <span class="about-link-label" data-i18n="about.denominationLabel">Our Heritage</span>
+              <span class="about-link-title"><span data-i18n="about.denominationLink">Denomination Introduction</span><span aria-hidden="true">→</span></span>
+            </a>
+          </div>
         </div>
         <div class="about-stat-col reveal">
           <div class="stat-block">
