@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Our Story and Vision · Grace & Truth Church</title>
+  <title>Our Story and Vision · Light and Love Church</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Manrope:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -60,8 +61,38 @@
       letter-spacing: .04em;
       color: var(--charcoal);
       text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      height: 50px;
     }
     .nav-logo span { color: var(--gold); }
+    .brand-mark {
+      display: block;
+      width: auto;
+      height: 100%;
+      object-fit: contain;
+    }
+    .brand-name {
+      margin-left: 12px;
+      font-family: 'Manrope', 'Noto Sans KR', sans-serif;
+      font-size: .98rem;
+      font-weight: 650;
+      line-height: 1.05;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .brand-name-ko {
+      display: none;
+      font-size: 1rem;
+      letter-spacing: -.01em;
+      text-transform: none;
+    }
+    .brand-mark-ko { display: none; }
+    html[lang="ko"] .brand-mark-en,
+    html[lang="ko"] .brand-name-en { display: none; }
+    html[lang="ko"] .brand-mark-ko { display: block; }
+    html[lang="ko"] .brand-name-ko { display: inline; }
 
     .nav-links { display: flex; gap: 36px; list-style: none; }
     .nav-links a {
@@ -324,8 +355,16 @@
       font-size: 1.1rem;
       color: rgba(255,255,255,.7);
       font-weight: 400;
+      display: inline-flex;
+      align-items: center;
+      height: 54px;
     }
     .footer-logo span { color: var(--gold-light); }
+    .footer-logo .brand-mark {
+      filter: invert(1);
+      opacity: .76;
+    }
+    .footer-logo .brand-name { color: rgba(255,255,255,.76); }
     footer p { font-size: .78rem; }
     .footer-links { display: flex; gap: 24px; list-style: none; }
     .footer-links a {
@@ -341,9 +380,13 @@
     /* ── MOBILE ── */
     @media (max-width: 768px) {
       nav { padding: 0 20px; }
+      .nav-logo { height: 44px; }
+      .brand-name { font-size: .82rem; margin-left: 9px; }
+      .brand-name-ko { font-size: .88rem; }
       .nav-links { display: none; }
       .story-page { padding: calc(var(--nav-height) + 56px) 22px 64px; }
       .story-hero { margin-bottom: 56px; }
+      .footer-logo { height: 48px; }
       .footer-inner { flex-direction: column; gap: 16px; padding: 0 24px; text-align: center; }
       .footer-links { flex-wrap: wrap; justify-content: center; }
       .story-cta { gap: 18px; }
@@ -354,7 +397,12 @@
 
   <!-- NAV -->
   <nav id="navbar">
-    <a href="index.html" class="nav-logo">Grace <span>&amp;</span> Truth <span>·</span> 은혜와 진리</a>
+    <a href="index.html" class="nav-logo" aria-label="Light and Love Church">
+      <img class="brand-mark brand-mark-en" src="assets/logo-mark-en.png" alt="Light and Love Church" />
+      <img class="brand-mark brand-mark-ko" src="assets/logo-mark-ko.png" alt="빛과 사랑의교회" />
+      <span class="brand-name brand-name-en">Light and Love Church</span>
+      <span class="brand-name brand-name-ko">빛과 사랑의 교회</span>
+    </a>
     <ul class="nav-links">
       <li><a href="index.html#about" data-i18n="nav.about">About</a></li>
       <li><a href="index.html#beliefs" data-i18n="nav.beliefs">Beliefs</a></li>
@@ -388,10 +436,10 @@
 
       <article class="story-article">
 
-        <p class="story-lead" data-i18n="story.lead">Our church is still in the process of finding a new name. But there is a question more important than a name.</p>
+        <p class="story-lead" data-i18n="story.lead">Our name, Light and Love, grows out of a question that has shaped our church from the beginning.</p>
         <p class="story-question" data-i18n="story.question">What kind of church are we dreaming of becoming?</p>
         <p data-i18n="story.intro1">We dream of a church where families grow together in faith, where every generation shares the same Word of God, and where Scripture is faithfully interpreted and lived out in real life.</p>
-        <p data-i18n="story.intro2">We are not simply looking for a new name. We are asking what calling God has entrusted to us in this time and in this place.</p>
+        <p data-i18n="story.intro2">We are asking what calling God has entrusted to Light and Love Church in this time and in this place.</p>
 
         <div class="story-ornament" aria-hidden="true">✦</div>
 
@@ -423,8 +471,8 @@
           <p data-i18n="story.s3p2">Children, youth, young adults, and adults may each have worship gatherings and groups that fit their stage of life. But the Scripture passage they share can be the same. Pastors and teachers can teach the same biblical text in ways that are appropriate for each generation.</p>
           <p data-i18n="story.s3p3">When this happens, conversations about faith can naturally continue at home.</p>
           <div class="story-prompt">
-            <p data-i18n="story.s3quote1">Parents can ask their children: “What did you learn from today's passage?”</p>
-            <p data-i18n="story.s3quote2">Children can ask their parents: “What did this Word mean to you?”</p>
+            <p data-i18n-html="story.s3quote1">Parents can ask their children:<br>“What did you learn from today's passage?”</p>
+            <p data-i18n-html="story.s3quote2">Children can ask their parents:<br>“What did this Word mean to you?”</p>
           </div>
           <p data-i18n="story.s3p4">Grandparents can share the grace of God they have experienced throughout their lives. Younger generations can bring their questions about school, work, relationships, identity, and the future before the Word of God.</p>
           <p data-i18n="story.s3p5">When a family shares the same Word, faith becomes more than something that happens on Sunday. It becomes part of the life of the home. The church does not replace that conversation. The church helps make that conversation possible.</p>
@@ -435,6 +483,7 @@
           <p data-i18n="story.s4p1">Our church stands within the reality of Korean immigrant families.</p>
           <p data-i18n="story.s4p2">In some families, there are grandparents who have lived their faith in Korean. In some families, there are 1.5-generation adults who grew up between Korea and America. In others, there are second-generation children who were born and raised in the United States and are more comfortable in English. And younger children are growing up between Korean and English, between two cultures.</p>
           <p data-i18n="story.s4p3">This is not merely a language issue. It is a family issue. It is a faith issue.</p>
+          <p data-i18n="story.s4pQuestions">Many families ask practical questions.</p>
           <div class="story-prompt">
             <p data-i18n="story.s4quote1">“Should we worship in Korean?”</p>
             <p data-i18n="story.s4quote2">“Should we worship in English?”</p>
@@ -477,7 +526,7 @@
         <section class="story-section">
           <h2 class="story-h2" data-i18n="story.s7Title">A Church Living in the Hope of the Kingdom of God</h2>
           <p data-i18n="story.s7p1">There is a theological phrase:</p>
-          <p class="story-question" data-i18n="story.s7question">Already, but not yet.</p>
+          <p class="story-question" data-i18n-html="story.s7question">Already,<br>but not yet.</p>
           <p data-i18n="story.s7p2">The kingdom of God has already begun through the coming of Jesus Christ. Jesus died on the cross, rose from the dead, and reigns even now. Therefore, the kingdom of God is not only a distant future hope. It is here even now.</p>
           <div class="story-prompt">
             <p data-i18n="story.s7line1">It is present in the community of faith.</p>
@@ -519,7 +568,12 @@
   <!-- FOOTER -->
   <footer>
     <div class="footer-inner">
-      <div class="footer-logo">Grace <span>&amp;</span> Truth <span>·</span> 은혜와 진리</div>
+      <div class="footer-logo" aria-label="Light and Love Church">
+        <img class="brand-mark brand-mark-en" src="assets/logo-mark-en.png" alt="Light and Love Church" />
+        <img class="brand-mark brand-mark-ko" src="assets/logo-mark-ko.png" alt="빛과 사랑의교회" />
+        <span class="brand-name brand-name-en">Light and Love Church</span>
+        <span class="brand-name brand-name-ko">빛과 사랑의 교회</span>
+      </div>
       <ul class="footer-links">
         <li><a href="index.html#about" data-i18n="nav.about">About</a></li>
         <li><a href="index.html#beliefs" data-i18n="nav.beliefs">Beliefs</a></li>
@@ -527,7 +581,7 @@
         <li><a href="index.html#sermons" data-i18n="nav.sermons">Sermons</a></li>
         <li><a href="index.html#contact" data-i18n="nav.contact">Contact</a></li>
       </ul>
-      <p data-i18n="footer.copyright">© 2025 Grace &amp; Truth. All rights reserved.</p>
+      <p data-i18n="footer.copyright">© 2026 Light and Love Church. All rights reserved.</p>
     </div>
   </footer>
 

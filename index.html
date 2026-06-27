@@ -3,9 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Grace & Truth Church</title>
+  <title>Light and Love Church</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Manrope:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
   <style>
+    @font-face {
+      font-family: 'Gmarket Sans';
+      src: url('assets/fonts/GmarketSansTTFMedium.ttf') format('truetype');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Gmarket Sans';
+      src: url('assets/fonts/GmarketSansTTFBold.ttf') format('truetype');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
@@ -67,8 +83,38 @@
       letter-spacing: .04em;
       color: var(--charcoal);
       text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      height: 50px;
     }
     .nav-logo span { color: var(--gold); }
+    .brand-mark {
+      display: block;
+      width: auto;
+      height: 100%;
+      object-fit: contain;
+    }
+    .brand-name {
+      margin-left: 12px;
+      font-family: 'Manrope', 'Noto Sans KR', sans-serif;
+      font-size: .98rem;
+      font-weight: 650;
+      line-height: 1.05;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .brand-name-ko {
+      display: none;
+      font-size: 1rem;
+      letter-spacing: -.01em;
+      text-transform: none;
+    }
+    .brand-mark-ko { display: none; }
+    html[lang="ko"] .brand-mark-en,
+    html[lang="ko"] .brand-name-en { display: none; }
+    html[lang="ko"] .brand-mark-ko { display: block; }
+    html[lang="ko"] .brand-name-ko { display: inline; }
 
     .nav-links { display: flex; gap: 36px; list-style: none; }
     .nav-links a {
@@ -210,7 +256,7 @@
       position: relative;
       overflow: hidden;
       isolation: isolate;
-      background: linear-gradient(145deg, #151515 0%, #1e1c19 55%, #141413 100%);
+      background: radial-gradient(circle at 50% 50%, #20201d 0%, #171714 58%, #11110f 100%);
     }
 
     .hero-visual::before {
@@ -218,10 +264,23 @@
       position: absolute; inset: 0;
       background:
         linear-gradient(rgba(0,0,0,.08), rgba(0,0,0,.08)),
-        radial-gradient(ellipse 48% 46% at 50% 43%, rgba(225,199,143,.19) 0%, rgba(184,154,94,.08) 40%, transparent 72%),
-        radial-gradient(ellipse 55% 48% at 18% 82%, rgba(184,154,94,.08) 0%, transparent 68%),
-        radial-gradient(ellipse 42% 42% at 92% 12%, rgba(255,244,219,.04) 0%, transparent 72%);
+        radial-gradient(ellipse 44% 42% at 50% 48%, rgba(234,230,223,.08) 0%, rgba(184,154,94,.035) 42%, transparent 72%);
       z-index: -3;
+    }
+    .hero-visual::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background:
+        linear-gradient(135deg, rgba(234,230,223,.07) 0%, rgba(234,230,223,.025) 24%, transparent 56%),
+        radial-gradient(circle at 28% 24%, rgba(234,230,223,.22) 0 1px, transparent 2px),
+        radial-gradient(circle at 72% 66%, rgba(234,230,223,.16) 0 1px, transparent 2px),
+        radial-gradient(circle at 46% 78%, rgba(234,230,223,.12) 0 1px, transparent 2px);
+      background-size: auto, 180px 180px, 240px 240px, 210px 210px;
+      opacity: .24;
+      animation: dustDrift 18s ease-in-out infinite alternate;
     }
 
     .hero-curves {
@@ -229,52 +288,61 @@
       inset: 0;
       z-index: -2;
       pointer-events: none;
+      background:
+        radial-gradient(ellipse 30% 42% at 51% 49%, rgba(234,230,223,.13) 0%, rgba(184,154,94,.065) 36%, transparent 68%);
     }
     .hero-curves::before,
     .hero-curves::after {
       content: '';
       position: absolute;
-      border: 1px solid rgba(225,199,143,.12);
+      border: 1px solid rgba(234,230,223,.055);
       border-radius: 50%;
       transform: rotate(-18deg);
+      box-shadow: 0 0 28px rgba(234,230,223,.035);
+      animation: ringPulse 9s ease-in-out infinite;
     }
     .hero-curves::before {
-      width: 78%;
-      height: 58%;
-      top: 18%;
-      left: 24%;
+      width: 82%;
+      height: 70%;
+      top: 9%;
+      left: 12%;
     }
     .hero-curves::after {
-      width: 96%;
-      height: 72%;
-      top: 8%;
-      left: 14%;
-      border-color: rgba(255,255,255,.055);
+      width: 112%;
+      height: 96%;
+      top: -4%;
+      left: -6%;
+      border-color: rgba(255,255,255,.032);
+      box-shadow: none;
+      animation-delay: 2.2s;
     }
 
     .hero-cross {
       position: absolute;
       top: 49%; left: 51%;
       transform: translate(-50%, -50%);
-      width: 140px; height: 220px;
-      filter: drop-shadow(0 0 18px rgba(225,199,143,.24));
+      width: 150px; height: 290px;
+      filter:
+        drop-shadow(0 14px 26px rgba(0,0,0,.28))
+        drop-shadow(0 0 12px rgba(225,199,143,.08));
     }
     .hero-cross::before, .hero-cross::after {
       content: '';
       position: absolute;
-      background: linear-gradient(135deg, rgba(255,255,255,.16), rgba(235,215,174,.12));
-      border-top: 1px solid rgba(255,255,255,.11);
-      border-left: 1px solid rgba(255,255,255,.07);
-      border-right: 1px solid rgba(0,0,0,.16);
+      background: linear-gradient(135deg, rgba(56,56,52,.92), rgba(36,36,33,.94));
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-top: 1px solid rgba(255,255,255,.14);
+      border-left: 1px solid rgba(255,255,255,.12);
+      border-right: 1px solid rgba(0,0,0,.18);
       border-bottom: 1px solid rgba(0,0,0,.2);
-      border-radius: 5px;
+      border-radius: 3px;
       box-shadow:
-        inset 1px 1px 5px rgba(255,255,255,.035),
-        inset -2px -2px 5px rgba(0,0,0,.13),
-        0 2px 5px rgba(0,0,0,.08);
+        inset 1px 1px 5px rgba(255,255,255,.04),
+        inset -1px -1px 5px rgba(0,0,0,.18);
     }
-    .hero-cross::before { width: 100%; height: 30px; top: 39%; transform: translateY(-50%); }
-    .hero-cross::after  { width: 30px; height: calc(100% + 18px); left: 50%; transform: translateX(-50%); }
+    .hero-cross::before { width: 31px; height: 100%; left: 50%; transform: translateX(-50%); z-index: 1; }
+    .hero-cross::after  { width: 100%; height: 31px; top: 34%; transform: translateY(-50%); z-index: 2; box-shadow: inset 1px 1px 5px rgba(255,255,255,.04), inset -1px -1px 5px rgba(0,0,0,.18), 0 8px 14px rgba(0,0,0,.26); }
 
     .hero-quote {
       position: absolute;
@@ -321,6 +389,17 @@
       line-height: 1.15;
     }
     .section-title em { font-style: normal; color: var(--gold); }
+
+    html[lang="ko"] #about .section-title,
+    html[lang="ko"] #beliefs .section-title,
+    html[lang="ko"] #services .section-title,
+    html[lang="ko"] #sermons .section-title,
+    html[lang="ko"] .contact-form-title {
+      font-family: 'Gmarket Sans', 'Noto Sans KR', sans-serif;
+      font-weight: 700;
+      letter-spacing: -.02em;
+      line-height: 1.16;
+    }
 
     .divider {
       width: 48px; height: 1px;
@@ -461,26 +540,34 @@
 
     .belief-card {
       padding: 40px 36px;
-      background: var(--white);
-      border: 1px solid var(--border);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.78), rgba(255,255,255,.42)),
+        radial-gradient(circle at 85% 12%, rgba(184,154,94,.13), transparent 34%);
+      border: 1px solid rgba(255,255,255,.72);
+      /* border-radius: var(--radius); */
       border-radius: var(--radius);
       position: relative;
       overflow: hidden;
-      transition: border-color .25s, transform .25s, box-shadow .25s;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 16px 44px rgba(28,28,28,.055), inset 1px 1px 0 rgba(255,255,255,.58);
+      transition: border-color .25s, transform .25s, box-shadow .25s, background .25s;
     }
     .belief-card:hover {
-      border-color: var(--gold);
+      border-color: rgba(184,154,94,.5);
       transform: translateY(-2px);
-      box-shadow: 0 6px 28px rgba(0,0,0,.05);
+      box-shadow: 0 22px 54px rgba(28,28,28,.08), inset 1px 1px 0 rgba(255,255,255,.7);
     }
     .belief-card::after {
       content: '';
-      position: absolute; bottom: 0; left: 0;
-      height: 2px; width: 0;
-      background: var(--gold);
-      transition: width .4s;
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(255,255,255,.48), transparent 38%);
+      opacity: .48;
+      pointer-events: none;
+      transition: opacity .35s;
     }
-    .belief-card:hover::after { width: 100%; }
+    .belief-card:hover::after { opacity: .72; }
 
     .belief-icon {
       width: 42px;
@@ -801,8 +888,16 @@
       font-size: 1.1rem;
       color: rgba(255,255,255,.7);
       font-weight: 400;
+      display: inline-flex;
+      align-items: center;
+      height: 54px;
     }
     .footer-logo span { color: var(--gold-light); }
+    .footer-logo .brand-mark {
+      filter: invert(1);
+      opacity: .76;
+    }
+    .footer-logo .brand-name { color: rgba(255,255,255,.76); }
     footer p { font-size: .78rem; }
     .footer-links { display: flex; gap: 24px; list-style: none; }
     .footer-links a {
@@ -830,6 +925,27 @@
     @keyframes fadeUp {
       to { opacity: 1; transform: none; }
     }
+    @keyframes ringPulse {
+      0%, 100% {
+        opacity: .72;
+        transform: rotate(-18deg) scale(1);
+      }
+      50% {
+        opacity: 1;
+        transform: rotate(-18deg) scale(1.035);
+      }
+    }
+    @keyframes dustDrift {
+      from { background-position: 0 0, 0 0, 0 0, 0 0; }
+      to { background-position: 0 0, 18px 26px, -24px 16px, 20px -18px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-curves::before,
+      .hero-curves::after,
+      .hero-visual::after {
+        animation: none;
+      }
+    }
 
     /* ── MOBILE ── */
     @media (max-width: 768px) {
@@ -842,7 +958,11 @@
       .beliefs-grid { grid-template-columns: 1fr; }
       .container { padding: 0 24px; }
       nav { padding: 0 24px; }
+      .nav-logo { height: 44px; }
+      .brand-name { font-size: .82rem; margin-left: 9px; }
+      .brand-name-ko { font-size: .88rem; }
       .nav-links { display: none; }
+      .footer-logo { height: 48px; }
       .form-row { grid-template-columns: 1fr; }
       .sermon-item { grid-template-columns: 48px 1fr; }
       .sermon-date { display: none; }
@@ -853,7 +973,12 @@
 
   <!-- NAV -->
   <nav id="navbar">
-    <a href="#" class="nav-logo">Grace <span>&amp;</span> Truth <span>·</span> 은혜와 진리</a>
+    <a href="#" class="nav-logo" aria-label="Light and Love Church">
+      <img class="brand-mark brand-mark-en" src="assets/logo-mark-en.png" alt="Light and Love Church" />
+      <img class="brand-mark brand-mark-ko" src="assets/logo-mark-ko.png" alt="빛과 사랑의교회" />
+      <span class="brand-name brand-name-en">Light and Love Church</span>
+      <span class="brand-name brand-name-ko">빛과 사랑의 교회</span>
+    </a>
     <ul class="nav-links">
       <li><a href="#about" data-i18n="nav.about">About</a></li>
       <li><a href="#beliefs" data-i18n="nav.beliefs">Beliefs</a></li>
@@ -877,7 +1002,7 @@
       <p class="hero-label" data-i18n="hero.label">Welcome Home</p>
       <h1 class="hero-h1" data-i18n-html="hero.title"><em>One Family.</em><br>One Word.<br>One Church.</h1>
       <p class="hero-body" data-i18n="hero.body">
-        Chicago Ark Church is a warm community where families and generations are built up in the Word as we walk the journey of faith together.
+        Light and Love Church is a bilingual community where families grow together in faith, share one Word across generations, and learn to live Scripture in everyday life.
       </p>
       <div class="hero-actions">
         <a href="#services" class="btn-primary" data-i18n="hero.primary">Plan Your Visit</a>
@@ -903,12 +1028,12 @@
       <div class="about-grid">
         <div class="reveal">
           <p class="section-label" data-i18n="about.label">Our Story</p>
-          <h2 class="section-title" data-i18n-html="about.title">For Families<br><em>Like Ours</em></h2>
+          <h2 class="section-title" data-i18n-html="about.title">A Church of<br><em>Light and Love</em></h2>
           <div class="divider"></div>
           <div class="about-body">
-            <p data-i18n="about.p1">Chicago Ark Church is a church for families seeking to live out their faith across two languages and two cultures.</p>
-            <p data-i18n="about.p2">A family may come to church together yet sometimes feel as though each generation lives in a different world when hearing the Word. That is why we desire children, young people, and adults to worship in settings suited to them while sharing the same Scripture each week and growing together in one faith.</p>
-            <p data-i18n="about.p3">Sometimes all generations worship together, and at other times each generation hears the Word in the language and at the level that speaks to them. Yet the Word we hold onto is one. Chicago Ark Church is a community walking together to strengthen families, connect generations, and share the gospel with the next generation.</p>
+            <p data-i18n="about.p1">Light and Love Church is shaped by a simple dream: families growing together in faith, every generation sharing the same Word, and Scripture being faithfully understood and lived out in real life.</p>
+            <p data-i18n="about.p2">We stand in the reality of Korean immigrant families, where language, culture, distance, and generational differences can easily scatter a family's faith. Our calling is to become a bridge so parents, children, and grandparents can hear the Word, worship, and keep the conversation of faith alive at home.</p>
+            <p data-i18n="about.p3">Our name points to our direction. We want to walk in the light of Christ and practice the love of Christ: connecting generations through the Word, building families through the gospel, and living the hope of God's kingdom in everyday life.</p>
           </div>
           <a href="story.html" class="btn-primary about-cta" data-i18n="about.readMore">Read the Full Story</a>
           <div class="about-links">
@@ -1024,7 +1149,7 @@
           <div class="service-tag" data-i18n="services.s3Tag">All Welcome</div>
         </div>
       </div>
-      <p class="services-note" data-i18n="services.note">All services held at 6240 N Avondale Ave · Live Korean ↔ English translation available</p>
+      <p class="services-note" data-i18n="services.note">All services held at 824 Waukegan Rd · Live Korean ↔ English translation available</p>
     </div>
   </section>
 
@@ -1094,16 +1219,15 @@
       <div class="contact-grid">
         <div class="reveal">
           <p class="section-label" data-i18n="contact.label">Find Us</p>
-          <h2 class="section-title" data-i18n-html="contact.title">We'd Love to<br><em>Hear From You</em></h2>
           <div class="divider"></div>
 
           <a class="map-box"
-             href="https://www.google.com/maps/dir/?api=1&destination=6240+N+Avondale+Ave%2C+Chicago%2C+IL+60631"
+             href="https://www.google.com/maps/dir/?api=1&destination=824+Waukegan+Rd%2C+Deerfield%2C+IL+60015"
              target="_blank"
              rel="noopener noreferrer"
              aria-label="Open church location in Google Maps">
             <iframe
-              src="https://www.google.com/maps?q=6240+N+Avondale+Ave,+Chicago,+IL+60631&z=15&output=embed"
+              src="https://www.google.com/maps?q=824+Waukegan+Rd,+Deerfield,+IL+60015&z=15&output=embed"
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
               title="Church location map"
@@ -1112,7 +1236,7 @@
 
           <div class="contact-detail">
             <div class="contact-detail-label" data-i18n="contact.addressLabel">Address</div>
-            <div class="contact-detail-value" data-i18n-html="contact.addressValue">6240 N Avondale Ave<br>Chicago, IL 60631</div>
+            <div class="contact-detail-value" data-i18n-html="contact.addressValue">824 Waukegan Rd<br>Deerfield, IL 60015</div>
           </div>
           <div class="contact-detail">
             <div class="contact-detail-label" data-i18n="contact.phoneLabel">Phone</div>
@@ -1126,7 +1250,7 @@
 
         <div class="reveal">
           <p class="section-label" style="visibility:hidden">—</p>
-          <h3 style="font-family:'Manrope','Noto Sans KR',sans-serif;font-size:1.6rem;font-weight:400;margin-bottom:28px;" data-i18n="contact.formTitle">Send Us a Message</h3>
+          <h3 class="contact-form-title" style="font-size:1.6rem;margin-bottom:28px;" data-i18n="contact.formTitle">Send Us a Message</h3>
           <form class="contact-form" id="contact-form"
                 action="https://formspree.io/f/xgoqjjwl"
                 method="POST"
@@ -1157,7 +1281,7 @@
             <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"
                    style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" aria-hidden="true" />
             <!-- Nice subject line in the inbox -->
-            <input type="hidden" name="_subject" value="New contact form submission — Grace & Truth" />
+            <input type="hidden" name="_subject" value="New contact form submission — Light and Love" />
             <button type="submit" class="form-submit" data-i18n="contact.submit">Send Message</button>
           </form>
           <div id="form-success" style="display:none;margin-top:16px;padding:16px 20px;background:var(--cream);border:1px solid var(--gold);font-size:.88rem;color:var(--mid);" data-i18n="contact.success">
@@ -1175,7 +1299,12 @@
   <footer>
     <div class="container">
       <div class="footer-inner">
-        <div class="footer-logo">Grace <span>&amp;</span> Truth <span>·</span> 은혜와 진리</div>
+        <div class="footer-logo" aria-label="Light and Love Church">
+          <img class="brand-mark brand-mark-en" src="assets/logo-mark-en.png" alt="Light and Love Church" />
+          <img class="brand-mark brand-mark-ko" src="assets/logo-mark-ko.png" alt="빛과 사랑의교회" />
+          <span class="brand-name brand-name-en">Light and Love Church</span>
+          <span class="brand-name brand-name-ko">빛과 사랑의 교회</span>
+        </div>
         <ul class="footer-links">
           <li><a href="#about" data-i18n="nav.about">About</a></li>
           <li><a href="#beliefs" data-i18n="nav.beliefs">Beliefs</a></li>
@@ -1183,7 +1312,7 @@
           <li><a href="#sermons" data-i18n="nav.sermons">Sermons</a></li>
           <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
         </ul>
-        <p data-i18n="footer.copyright">© 2025 Grace &amp; Truth. All rights reserved.</p>
+        <p data-i18n="footer.copyright">© 2026 Light and Love Church. All rights reserved.</p>
       </div>
     </div>
   </footer>

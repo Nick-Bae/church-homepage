@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Grace & Truth Church",
+    "title": "Light and Love Church",
     "htmlLang": "en"
   },
   "nav": {
@@ -14,7 +14,7 @@
   "hero": {
     "label": "Welcome Home",
     "title": "<em>One Family.</em><br>One Word.<br>One Church.",
-    "body": "Chicago Ark Church is a warm community where families and generations are built up in the Word as we walk the journey of faith together.",
+    "body": "Light and Love Church is a bilingual community where families grow together in faith, share one Word across generations, and learn to live Scripture in everyday life.",
     "primary": "Plan Your Visit",
     "secondary": "Our Story",
     "quote": "\"We will tell the next generation of the deeds he has done.\"",
@@ -22,10 +22,10 @@
   },
   "about": {
     "label": "Our Story",
-    "title": "For Families<br><em>Like Ours</em>",
-    "p1": "Chicago Ark Church is a church for families seeking to live out their faith across two languages and two cultures.",
-    "p2": "A family may come to church together yet sometimes feel as though each generation lives in a different world when hearing the Word. That is why we desire children, young people, and adults to worship in settings suited to them while sharing the same Scripture each week and growing together in one faith.",
-    "p3": "Sometimes all generations worship together, and at other times each generation hears the Word in the language and at the level that speaks to them. Yet the Word we hold onto is one. Chicago Ark Church is a community walking together to strengthen families, connect generations, and share the gospel with the next generation.",
+    "title": "A Church of<br><em>Light and Love</em>",
+    "p1": "Light and Love Church is shaped by a simple dream: families growing together in faith, every generation sharing the same Word, and Scripture being faithfully understood and lived out in real life.",
+    "p2": "We stand in the reality of Korean immigrant families, where language, culture, distance, and generational differences can easily scatter a family's faith. Our calling is to become a bridge so parents, children, and grandparents can hear the Word, worship, and keep the conversation of faith alive at home.",
+    "p3": "Our name points to our direction. We want to walk in the light of Christ and practice the love of Christ: connecting generations through the Word, building families through the gospel, and living the hope of God's kingdom in everyday life.",
     "readMore": "Read the Full Story",
     "pastorLabel": "Meet Our Pastor",
     "pastorLink": "Pastor Introduction",
@@ -63,7 +63,7 @@
     "s3Time": "TBD",
     "s3Name": "Bible Study",
     "s3Tag": "All Welcome",
-    "note": "All services held at 6240 N Avondale Ave · Live Korean ↔ English translation available"
+    "note": "All services held at 824 Waukegan Rd · Live Korean ↔ English translation available"
   },
   "sermons": {
     "label": "Media",
@@ -88,10 +88,9 @@
   },
   "contact": {
     "label": "Find Us",
-    "title": "We'd Love to<br><em>Hear From You</em>",
-    "pin": "6240 N Avondale Ave, Chicago, IL",
+    "pin": "824 Waukegan Rd, Deerfield, IL",
     "addressLabel": "Address",
-    "addressValue": "6240 N Avondale Ave<br>Chicago, IL 60631",
+    "addressValue": "824 Waukegan Rd<br>Deerfield, IL 60015",
     "phoneLabel": "Phone",
     "emailLabel": "Email",
     "formTitle": "Send Us a Message",
@@ -112,13 +111,13 @@
     "error": "Something went wrong. Please try again, or email us directly."
   },
   "footer": {
-    "copyright": "© 2025 Grace & Truth. All rights reserved."
+    "copyright": "© 2026 Light and Love Church. All rights reserved."
   },
   "pastor": {
-    "metaTitle": "Our Pastor · Grace & Truth Church",
+    "metaTitle": "Our Pastor · Light and Love Church",
     "eyebrow": "Meet Our Pastor",
     "title": "Pastor <em>Namju Bae</em>",
-    "role": "Teaching Pastor · Chicago Ark Church",
+    "role": "Teaching Pastor · Light and Love Church",
     "intro": "Pastor Namju Bae serves families living between languages, cultures, and generations. His hope is simple: that the whole family can hear the same Word, worship in the same community, and grow together in faith.",
     "quote": "\"The pastor's role is not to replace the conversation of faith at home. It is to resource it.\"",
     "ministryTitle": "A Ministry Shaped by Family",
@@ -134,11 +133,17 @@
     "back": "Back to Home"
   },
   "denomination": {
-    "metaTitle": "Our Denominational Heritage · Grace & Truth Church",
+    "metaTitle": "Our Denominational Heritage · Light and Love Church",
+    "affiliationName": "Christian Reformed Church",
+    "affiliationLabel": "Denominational Affiliation",
     "eyebrow": "Our Denominational Heritage",
     "title": "Rooted in the <em>Reformed Tradition</em>",
     "lead": "Our ministry is shaped by the historic Christian faith and the Reformed tradition, with a deep commitment to the authority of Scripture, the grace of God, and the calling to live faithfully in every part of life.",
     "note": "Pastor Namju Bae is ordained in the Christian Reformed Church. This page describes the theological heritage that shapes our ministry.",
+    "intro": "We belong to a broader Reformed church family whose worship, confessions, and mission have been shaped across generations. This heritage gives our church both deep roots and a practical calling to serve Christ in the world.",
+    "videoTitle": "Our Five Callings",
+    "videoBody": "The Christian Reformed Church describes its shared mission through five callings that help shape congregational ministry, discipleship, and witness in local communities.",
+    "videoHelp": "Use the CC button in the video player and select Korean to view Korean captions.",
     "scriptureTitle": "Scripture",
     "scriptureBody": "We receive the Bible as God's authoritative Word and seek to understand each passage within the whole story of creation, fall, redemption, and restoration.",
     "graceTitle": "Grace",
@@ -156,15 +161,15 @@
     "back": "Back to Home"
   },
   "story": {
-    "metaTitle": "Our Story and Vision · Grace & Truth Church",
+    "metaTitle": "Our Story and Vision · Light and Love Church",
     "label": "Our Church",
     "title": "Our Story<br>and <em>Vision</em>",
     "byline": "Pastor Namju Bae",
     "back": "Back to Home",
-    "lead": "Our church is still in the process of finding a new name. But there is a question more important than a name.",
+    "lead": "Our name, Light and Love, grows out of a question that has shaped our church from the beginning.",
     "question": "What kind of church are we dreaming of becoming?",
     "intro1": "We dream of a church where families grow together in faith, where every generation shares the same Word of God, and where Scripture is faithfully interpreted and lived out in real life.",
-    "intro2": "We are not simply looking for a new name. We are asking what calling God has entrusted to us in this time and in this place.",
+    "intro2": "We are asking what calling God has entrusted to Light and Love Church in this time and in this place.",
     "s1Title": "A Dream That Began with My Mother's Faith",
     "s1p1": "My dream for the church did not begin in a seminary classroom. It began in the memories of my childhood.",
     "s1p2": "Before marriage, my mother was not a Christian. Then my older brother became seriously ill. No one could clearly explain the cause, and no one could easily treat his condition. At that time, surprisingly, a doctor encouraged my parents to go to church. By God's grace, my brother recovered. That became the beginning of my mother's faith.",
@@ -185,14 +190,15 @@
     "s3question": "Every generation meditating on the same Scripture passage during the same week.",
     "s3p2": "Children, youth, young adults, and adults may each have worship gatherings and groups that fit their stage of life. But the Scripture passage they share can be the same. Pastors and teachers can teach the same biblical text in ways that are appropriate for each generation.",
     "s3p3": "When this happens, conversations about faith can naturally continue at home.",
-    "s3quote1": "Parents can ask their children: “What did you learn from today's passage?”",
-    "s3quote2": "Children can ask their parents: “What did this Word mean to you?”",
+    "s3quote1": "Parents can ask their children:<br>“What did you learn from today's passage?”",
+    "s3quote2": "Children can ask their parents:<br>“What did this Word mean to you?”",
     "s3p4": "Grandparents can share the grace of God they have experienced throughout their lives. Younger generations can bring their questions about school, work, relationships, identity, and the future before the Word of God.",
     "s3p5": "When a family shares the same Word, faith becomes more than something that happens on Sunday. It becomes part of the life of the home. The church does not replace that conversation. The church helps make that conversation possible.",
     "s4Title": "A Bridge for Korean Immigrant Families",
     "s4p1": "Our church stands within the reality of Korean immigrant families.",
     "s4p2": "In some families, there are grandparents who have lived their faith in Korean. In some families, there are 1.5-generation adults who grew up between Korea and America. In others, there are second-generation children who were born and raised in the United States and are more comfortable in English. And younger children are growing up between Korean and English, between two cultures.",
     "s4p3": "This is not merely a language issue. It is a family issue. It is a faith issue.",
+    "s4pQuestions": "Many families ask practical questions.",
     "s4quote1": "“Should we worship in Korean?”",
     "s4quote2": "“Should we worship in English?”",
     "s4quote3": "“Should parents and children attend different services?”",
@@ -224,7 +230,7 @@
     "s6p9": "We dream of a church where faithful interpretation of Scripture and real-life application go together.",
     "s7Title": "A Church Living in the Hope of the Kingdom of God",
     "s7p1": "There is a theological phrase:",
-    "s7question": "Already, but not yet.",
+    "s7question": "Already,<br>but not yet.",
     "s7p2": "The kingdom of God has already begun through the coming of Jesus Christ. Jesus died on the cross, rose from the dead, and reigns even now. Therefore, the kingdom of God is not only a distant future hope. It is here even now.",
     "s7line1": "It is present in the community of faith.",
     "s7line2": "It is present in acts of mercy.",
