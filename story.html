@@ -253,6 +253,10 @@
       color: var(--charcoal);
       font-weight: 300;
     }
+    html[lang="ko"] .story-article {
+      word-break: keep-all;
+      overflow-wrap: normal;
+    }
 
     .story-article p { margin-bottom: 24px; }
 
@@ -265,6 +269,7 @@
       text-align: center;
       line-height: 1.6;
       margin-bottom: 40px !important;
+      text-wrap: balance;
     }
 
     .story-intro {
@@ -283,6 +288,7 @@
       color: var(--charcoal);
       text-align: center;
       margin: 36px 0 !important;
+      text-wrap: balance;
     }
 
     .story-prompt {
@@ -315,6 +321,7 @@
       padding-bottom: 16px;
       border-bottom: 1px solid var(--border);
       position: relative;
+      text-wrap: balance;
     }
     .story-h2::after {
       content: '';
@@ -386,6 +393,7 @@
       .nav-links { display: none; }
       .story-page { padding: calc(var(--nav-height) + 56px) 22px 64px; }
       .story-hero { margin-bottom: 56px; }
+      html[lang="ko"] .story-article { overflow-wrap: anywhere; }
       .footer-logo { height: 48px; }
       .footer-inner { flex-direction: column; gap: 16px; padding: 0 24px; text-align: center; }
       .footer-links { flex-wrap: wrap; justify-content: center; }
@@ -500,7 +508,7 @@
         <section class="story-section">
           <h2 class="story-h2" data-i18n="story.s5Title">A Church That Teaches Scripture Faithfully</h2>
           <p data-i18n="story.s5p1">Another important part of the church we dream of is faithful teaching of Scripture.</p>
-          <p data-i18n="story.s5p2">I have had the opportunity to study the Word of God in several seminaries and theological traditions. I studied in Methodist, Baptist, and Lutheran contexts through M.Div., Th.M., and Ph.D. studies in Old Testament. I also grew up in a Presbyterian church and was ordained in the Christian Reformed Church, the CRC.</p>
+          <p data-i18n="story.s5p2">I have had the opportunity to study the Word of God in several seminaries and theological traditions. I studied in Methodist, Baptist, and Lutheran contexts through M.Div., Th.M., and Ph.D. studies in Old Testament. I also grew up in a Presbyterian church and was ordained in the Christian Reformed Church in North America, the CRCNA.</p>
           <p data-i18n="story.s5p3">These diverse denominational and theological experiences helped me see the breadth and depth of the Christian faith. At the same time, they planted one conviction more deeply in me:</p>
           <p class="story-question" data-i18n="story.s5question">The church must handle the Word of God carefully, honestly, and faithfully.</p>
           <p data-i18n="story.s5p4">I especially value the Old Testament. Without a faithful understanding of the Old Testament, it is difficult to understand the whole Bible rightly. The New Testament opens upon the promises and longings of the Old Testament. Without understanding the sacrificial system, it is difficult to understand the cross fully. Without understanding the law, it is difficult to understand grace fully. Without understanding covenant, it is difficult to understand the kingdom of God fully.</p>
