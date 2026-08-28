@@ -13,12 +13,12 @@
   },
   "hero": {
     "label": "Welcome Home",
-    "title": "<em>One Family.</em><br>One Word.<br>One Church.",
-    "body": "Light and Love Church is a bilingual community where families grow together in faith, share one Word across generations, and learn to live Scripture in everyday life.",
+    "title": "Light and Love<br><em>Church</em>",
+    "body": "A church that walks in love<br>and lives as children of light.",
     "primary": "Plan Your Visit",
     "secondary": "Our Story",
-    "quote": "\"We will tell the next generation of the deeds he has done.\"",
-    "quoteCite": "— Psalm 78:4"
+    "quote": "Walk in love,<br>and walk as children of light.",
+    "quoteCite": "— Ephesians 5:2, 8"
   },
   "about": {
     "label": "Our Story",
@@ -165,6 +165,8 @@
     "question": "What kind of church do we dream of becoming?",
     "intro1": "We dream of a church where families grow together in faith, every generation shares in the same Word of God, and Scripture is faithfully understood and lived out in everyday life.",
     "intro2": "We continue to ask what calling God has entrusted to Light and Love Church in this time and place.",
+    "scriptureQuote": "We will not hide these things from their children;<br>we will tell the coming generation the LORD’s praiseworthy deeds,<br>his power, and the wonders he has done.",
+    "scriptureCite": "— Psalm 78:4",
     "s1Title": "A Dream Rooted in My Mother’s Faith",
     "s1p1": "My dream for the church did not begin in a seminary classroom. It was planted in me during my childhood through the life of my mother.",
     "s1p2": "Before she married, my mother was not a Christian. Then my older brother became seriously ill. No one could clearly explain what was wrong, and no one seemed able to treat him. Quite unexpectedly, a doctor suggested that my parents attend church. By God’s grace, my brother recovered, and through that experience my mother began her life of faith.",
