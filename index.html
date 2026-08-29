@@ -461,6 +461,21 @@
       text-transform: uppercase;
       color: var(--mid);
     }
+    .stat-title {
+      margin-top: 12px;
+      font-family: 'Manrope', 'Noto Sans KR', sans-serif;
+      font-size: 1.18rem;
+      font-weight: 600;
+      line-height: 1.35;
+      color: var(--charcoal);
+    }
+    .stat-body {
+      margin-top: 8px;
+      font-size: .86rem;
+      font-weight: 300;
+      line-height: 1.65;
+      color: var(--mid);
+    }
 
     .about-cta {
       margin-top: 36px;
@@ -651,9 +666,26 @@
 
     .services-note {
       margin-top: 32px;
-      text-align: center;
-      font-size: .85rem;
-      color: rgba(255,255,255,.35);
+      padding: 24px 28px;
+      border: 1px solid rgba(184,154,94,.36);
+      border-left: 2px solid var(--gold-light);
+      background: rgba(255,255,255,.045);
+      border-radius: var(--radius);
+      color: rgba(255,255,255,.72);
+    }
+    .services-note-title {
+      margin-bottom: 8px;
+      font-family: 'Manrope', 'Noto Sans KR', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--gold-light);
+    }
+    .services-note-body {
+      max-width: 760px;
+      font-size: .92rem;
+      font-weight: 300;
+      line-height: 1.75;
+      color: rgba(255,255,255,.62);
     }
 
     /* ── SERMONS ── */
@@ -1026,20 +1058,28 @@
         </div>
         <div class="about-stat-col reveal">
           <div class="stat-block">
-            <div class="stat-num">40<span>+</span></div>
-            <div class="stat-label" data-i18n="about.s1Label">Years of Community</div>
+            <div class="stat-num">01</div>
+            <div class="stat-label" data-i18n="about.s1Label">Community</div>
+            <h3 class="stat-title" data-i18n="about.s1Title">A Community That Knows Your Name</h3>
+            <p class="stat-body" data-i18n="about.s1Body">In the closeness of a small community, we share one another’s joys and struggles.</p>
           </div>
           <div class="stat-block">
-            <div class="stat-num">TBD</div>
-            <div class="stat-label" data-i18n="about.s2Label">Members &amp; Friends</div>
+            <div class="stat-num">02</div>
+            <div class="stat-label" data-i18n="about.s2Label">Worship</div>
+            <h3 class="stat-title" data-i18n="about.s2Title">Worship That Bridges Two Languages</h3>
+            <p class="stat-body" data-i18n="about.s2Body">We help Korean and English differences keep from dividing a family’s faith.</p>
           </div>
           <div class="stat-block">
-            <div class="stat-num">TBD</div>
-            <div class="stat-label" data-i18n="about.s3Label">Active Ministries</div>
+            <div class="stat-num">03</div>
+            <div class="stat-label" data-i18n="about.s3Label">Conversation</div>
+            <h3 class="stat-title" data-i18n="about.s3Title">A Place to Share Questions</h3>
+            <p class="stat-body" data-i18n="about.s3Body">We listen and speak together without hiding the questions of faith and life.</p>
           </div>
           <div class="stat-block">
-            <div class="stat-num">2</div>
-            <div class="stat-label" data-i18n="about.s4Label">Languages of Worship</div>
+            <div class="stat-num">04</div>
+            <div class="stat-label" data-i18n="about.s4Label">Together</div>
+            <h3 class="stat-title" data-i18n="about.s4Title">A Church We Build Together</h3>
+            <p class="stat-body" data-i18n="about.s4Body">We value the process of learning and growing together more than appearing already complete.</p>
           </div>
         </div>
       </div>
@@ -1120,7 +1160,10 @@
           <div class="service-tag" data-i18n="services.s2Tag">All Welcome</div>
         </div>
       </div>
-      <p class="services-note" data-i18n="services.note">Live Korean ↔ English interpretation is available during Sunday worship.</p>
+      <div class="services-note">
+        <h3 class="services-note-title" data-i18n="services.noteTitle">AI Live Interpretation Available</h3>
+        <p class="services-note-body" data-i18n="services.noteBody">Live Korean-English interpretation is available during Sunday worship, helping families hear the same Word together across language differences.</p>
+      </div>
     </div>
   </section>
 

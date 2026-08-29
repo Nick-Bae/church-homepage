@@ -31,10 +31,18 @@
     "pastorLink": "Pastor Introduction",
     "denominationLabel": "Our Heritage",
     "denominationLink": "Denomination Introduction",
-    "s1Label": "Years of Community",
-    "s2Label": "Members & Friends",
-    "s3Label": "Active Ministries",
-    "s4Label": "Languages of Worship"
+    "s1Label": "Community",
+    "s1Title": "A Community That Knows Your Name",
+    "s1Body": "In the closeness of a small community, we share one another’s joys and struggles.",
+    "s2Label": "Worship",
+    "s2Title": "Worship That Bridges Two Languages",
+    "s2Body": "We help Korean and English differences keep from dividing a family’s faith.",
+    "s3Label": "Conversation",
+    "s3Title": "A Place to Share Questions",
+    "s3Body": "We listen and speak together without hiding the questions of faith and life.",
+    "s4Label": "Together",
+    "s4Title": "A Church We Build Together",
+    "s4Body": "We value the process of learning and growing together more than appearing already complete."
   },
   "beliefs": {
     "label": "What We're About",
@@ -59,7 +67,8 @@
     "s2Time": "TBD",
     "s2Name": "Bible Study",
     "s2Tag": "All Welcome",
-    "note": "Live Korean ↔ English interpretation is available during Sunday worship."
+    "noteTitle": "AI Live Interpretation Available",
+    "noteBody": "Live Korean-English interpretation is available during Sunday worship, helping families hear the same Word together across language differences."
   },
   "sermons": {
     "label": "Media",
