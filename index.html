@@ -423,11 +423,11 @@
     }
 
     .about-stat-col {
-      display: flex; flex-direction: column; gap: 32px;
+      display: flex; flex-direction: column; gap: 22px;
     }
 
     .stat-block {
-      padding: 36px;
+      padding: 28px 30px;
       background: var(--cream);
       border: 1px solid var(--border);
       border-radius: var(--radius);
@@ -447,7 +447,7 @@
 
     .stat-num {
       font-family: 'Manrope', 'Noto Sans KR', sans-serif;
-      font-size: 3.5rem;
+      font-size: 3rem;
       font-weight: 300;
       line-height: 1;
       color: var(--charcoal);
@@ -455,25 +455,25 @@
     .stat-num span { color: var(--gold); }
 
     .stat-label {
-      margin-top: 8px;
-      font-size: .8rem;
+      margin-top: 7px;
+      font-size: .74rem;
       letter-spacing: .12em;
       text-transform: uppercase;
       color: var(--mid);
     }
     .stat-title {
-      margin-top: 12px;
+      margin-top: 10px;
       font-family: 'Manrope', 'Noto Sans KR', sans-serif;
-      font-size: 1.18rem;
+      font-size: 1.04rem;
       font-weight: 600;
       line-height: 1.35;
       color: var(--charcoal);
     }
     .stat-body {
-      margin-top: 8px;
-      font-size: .86rem;
+      margin-top: 7px;
+      font-size: .8rem;
       font-weight: 300;
-      line-height: 1.65;
+      line-height: 1.55;
       color: var(--mid);
     }
 
@@ -962,6 +962,11 @@
       .hero-visual { display: none; }
       .hero-text { padding: 60px 28px; }
       .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+      .about-stat-col { gap: 18px; }
+      .stat-block { padding: 28px 24px; }
+      .stat-num { font-size: 2.7rem; }
+      .stat-title { font-size: 1.05rem; }
+      .stat-body { font-size: .84rem; }
       .about-links { grid-template-columns: 1fr; }
       .services-grid { grid-template-columns: 1fr; }
       .beliefs-grid { grid-template-columns: 1fr; }
